@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title id="title">DevilA 头像</title>
+  <rect width="256" height="256" rx="64" fill="#173f45"/>
+  <circle cx="128" cy="128" r="88" fill="#1e5056" stroke="#83b7b3" stroke-width="4"/>
+  <path d="M83 65h48c48 0 73 24 73 63s-25 63-73 63H83Zm40 36v54h10c22 0 32-10 32-27s-10-27-32-27Z" fill="#e7efeb"/>
+  <circle cx="192" cy="62" r="12" fill="#d9a765"/>
+</svg>

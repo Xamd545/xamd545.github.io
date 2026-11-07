@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">DevilA 博客首页封面</title>
+  <desc id="desc">深青色背景上的抽象书页与轨迹图案</desc>
+  <rect width="1600" height="720" fill="#173f45"/>
+  <circle cx="1330" cy="100" r="330" fill="#1d4c52"/>
+  <circle cx="1280" cy="650" r="420" fill="#12363c"/>
+  <path d="M0 580 C280 460 510 690 790 550 S1300 450 1600 560 V720 H0Z" fill="#1e5056"/>
+  <g fill="none" stroke="#83b7b3" stroke-width="3" opacity=".52">
+    <path d="M1040 160h260M1100 220h310M1000 280h210"/>
+    <path d="M180 140c170 0 280 80 360 210M140 210c130 10 220 70 290 170"/>
+  </g>
+  <g transform="translate(180 260)">
+    <path d="M0 0c100-32 195-18 280 40v210c-85-58-180-72-280-40Z" fill="#e7efeb"/>
+    <path d="M560 0c-100-32-195-18-280 40v210c85-58 180-72 280-40Z" fill="#d4e3de"/>
+    <path d="M280 40v210" stroke="#9bb8b2" stroke-width="4"/>
+    <g stroke="#8aa8a3" stroke-width="5" stroke-linecap="round" opacity=".7">
+      <path d="M55 70h140M55 105h165M55 140h120M365 70h140M340 105h165M385 140h120"/>
+    </g>
+  </g>
+  <g fill="#d9a765">
+    <circle cx="1460" cy="290" r="7"/><circle cx="910" cy="100" r="5"/><circle cx="850" cy="620" r="6"/>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560" role="img" aria-labelledby="title desc">
+  <title id="title">DevilA 文章默认封面</title>
+  <desc id="desc">深青色背景上的文章与代码符号</desc>
+  <rect width="1000" height="560" fill="#173f45"/>
+  <path d="M0 420 C230 320 400 510 650 390 S880 340 1000 390 V560 H0Z" fill="#1e5056"/>
+  <g transform="translate(330 120)" fill="none" stroke="#d4e3de" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 40 20 140l100 100M220 40l100 100-100 100"/>
+    <path d="m195 10-50 260" stroke="#d9a765"/>
+  </g>
+  <g fill="#83b7b3" opacity=".65"><circle cx="150" cy="120" r="8"/><circle cx="850" cy="160" r="6"/><circle cx="780" cy="450" r="9"/></g>
+</svg>
