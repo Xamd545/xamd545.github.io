@@ -1,0 +1,643 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>大气能量学 | DevilA</title><meta name="author" content="DevilA"><meta name="copyright" content="DevilA"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="介绍大气能量学的基本信息，包括实际大气的能量转换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大气能量学">
+<meta property="og:url" content="https://xamd545.github.io/2026/11/14/%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E5%AD%A6/index.html">
+<meta property="og:site_name" content="DevilA">
+<meta property="og:description" content="介绍大气能量学的基本信息，包括实际大气的能量转换">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xamd545.github.io/img/text_pic.jpg">
+<meta property="article:published_time" content="2026-11-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-11-14T09:53:09.219Z">
+<meta property="article:author" content="DevilA">
+<meta property="article:tag" content="大气科学">
+<meta property="article:tag" content="大气能量学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xamd545.github.io/img/text_pic.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "大气能量学",
+  "url": "https://xamd545.github.io/2026/11/14/%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E5%AD%A6/",
+  "image": "https://xamd545.github.io/img/text_pic.jpg",
+  "datePublished": "2026-11-13T16:00:00.000Z",
+  "dateModified": "2026-11-14T09:53:09.219Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "DevilA",
+      "url": "https://xamd545.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://xamd545.github.io/2026/11/14/%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E5%AD%A6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=5.7.2"><link rel="stylesheet" href="/fontawesome/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        try {
+          const data = { value }
+
+          if (ttl != null) {
+            data.expiry = Date.now() + ttl * 86400000
+          }
+
+          localStorage.setItem(key, JSON.stringify(data))
+        } catch (e) {
+          console.error(e)
+        }
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const start = 6
+              const end = 18
+              const isNight =
+                start < end
+                    ? hour < start || hour >= end
+                    : hour >= start || hour < end
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '大气能量学',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-color: #f4f7f8;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/text_pic.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">DevilA</span></a><a class="nav-page-title" href="/"><span class="site-name">大气能量学</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">大气能量学</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-11-13T16:00:00.000Z" title="发表于 2026-11-14 00:00:00">2026-11-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-11-14T09:53:09.219Z" title="更新于 2026-11-14 17:53:09">2026-11-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/">专业课</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="能量的形态"><a href="#能量的形态" class="headerlink" title="能量的形态"></a>能量的形态</h1><h2 id="位能"><a href="#位能" class="headerlink" title="位能"></a>位能</h2><p>质点处于地球表面附近重力场中的任一点，都具有重力势能，即位能<br>设气柱底部高度为 $z_1$、气压为 $P_1$，顶部高度为 $z_2$、气压为 $P_2$，且 $P_1&gt;P_2$。单位截面积气柱的位能为</p>
+<p>$$
+\Phi=\int_{z_1}^{z_2}\rho gz\,dz
+=\int_{P_2}^{P_1}z\,dP.
+$$</p>
+<h2 id="内能"><a href="#内能" class="headerlink" title="内能"></a>内能</h2><p>内能是热力学能量。单位质量气块的内能为$c_vT$。单位截面积气柱的内能：</p>
+<p>$$
+I=c_v\int_{z_1}^{z_2}\rho T\,dz
+=\frac{c_v}{g}\int_{P_2}^{P_1}T\,dP.
+$$</p>
+<h2 id="动能"><a href="#动能" class="headerlink" title="动能"></a>动能</h2><p>单位质量气块的动能：$\frac12V^2$，其中 $V=|\vec V|$。单位截面积气柱的动能：</p>
+<p>$$
+K=\int_{z_1}^{z_2}\frac12\rho V^2\,dz
+=\frac{1}{2g}\int_{P_2}^{P_1}V^2\,dP.
+$$</p>
+<p>平均动能与涡旋动能之间的相互转换称为<strong>波流相互作用</strong>。</p>
+<h2 id="潜热能"><a href="#潜热能" class="headerlink" title="潜热能"></a>潜热能</h2><p>潜热能定义为系统中水汽全部凝结所释放的热量。定义相变潜热$L$：也就是单位质量水汽凝结所释放的热量。<br>单位质量湿空气的潜热能：$Lq$。单位截面积气柱的潜热能：</p>
+<p>$$
+H=\int_{z_1}^{z_2}Lq\rho\,dz
+=\frac{L}{g}\int_{P_2}^{P_1}q\,dP.
+$$</p>
+<h2 id="位能、内能与全位能"><a href="#位能、内能与全位能" class="headerlink" title="位能、内能与全位能"></a>位能、内能与全位能</h2><blockquote>
+<p>23真题 填空</p>
+</blockquote>
+<h3 id="无限高气柱：全位能"><a href="#无限高气柱：全位能" class="headerlink" title="无限高气柱：全位能"></a>无限高气柱：全位能</h3><p>取地面气压为 $P_0$，$z\to\infty$ 时 $P\to0$。无限高气柱的位能为</p>
+<p>$$
+\Phi=\int_0^{P_0}z\,dP
+=\int_0^{P_0}[d(Pz)-Pdz]
+=\int_{0}^\infty Pdz
+=R\int_0^\infty\rho T\,dz.
+$$</p>
+<p>无限高气柱的内能为</p>
+<p>$$
+I=c_v\int_0^\infty\rho T\,dz.
+$$</p>
+<p>因此位能与内能的比值为</p>
+<p>$$
+\frac{\Phi}{I}
+=\frac{R}{c_v}
+=\frac{c_p-c_v}{c_v}
+\approx0.41,
+$$</p>
+<p>其中 $R=c_p-c_v$。对<strong>静力平衡的无限高气柱</strong>而言，大气的内能与位能与温度有关且同向变化</p>
+<p>物理解释为：<strong>内能增加 → 温度升高 → 气柱膨胀 → 质心抬升 → 位能增加。</strong></p>
+<p>因此，定义<strong>全位能</strong>为位能与内能之和：（或$E=c_{v}T+gz$）</p>
+<p>$$
+E=\Phi+I
+=\frac{R}{c_v}I+I
+=\frac{c_v+R}{c_v}I
+=\frac{c_p}{c_v}I.
+$$</p>
+<p>代入 $I=c_v\int_0^\infty\rho T\,dz$，得</p>
+<p>$$
+E=c_p\int_0^\infty\rho T\,dz.
+$$</p>
+<p>单位质量气块的相应量为 $c_pT$，即焓。因此，气柱的全位能就是气柱的焓。</p>
+<h3 id="有限高气柱"><a href="#有限高气柱" class="headerlink" title="有限高气柱"></a>有限高气柱</h3><p>对有限高气柱，位能为</p>
+<p>$$
+\begin{aligned}
+\Phi
+&amp;=\int_{P_2}^{P_1}z\,dP\\
+&amp;=\left.zP\right|_{z_2,P_2}^{z_1,P_1}
+-\int_{z_2}^{z_1}P\,dz\\
+&amp;=(z_1P_1-z_2P_2)+\int_{z_1}^{z_2}P\,dz\\
+&amp;=(z_1P_1-z_2P_2)+R\int_{z_1}^{z_2}\rho T\,dz\\
+&amp;=z_1P_1-z_2P_2+\frac{R}{c_v}I\\
+&amp;=z_1P_1-z_2P_2+0.41I.
+\end{aligned}
+$$</p>
+<p>所以，对有限高气柱而言，位能不是简单地与内能成正比，还与气柱底部、顶部的高度和气压有关。</p>
+<h1 id="推导质点动能方程"><a href="#推导质点动能方程" class="headerlink" title="推导质点动能方程"></a>推导质点动能方程</h1><p>单位质量气块的运动方程为</p>
+<p>$$
+\frac{d\vec V}{dt}
+=-\frac{1}{\rho}\nabla p
+-2\vec\Omega\times\vec V
++\vec G
++\vec F_r,
+\qquad \vec G=-g\vec k.
+$$</p>
+<p>用速度 $\vec V$ 点乘运动方程，则有</p>
+<p>$$
+\frac{d}{dt}\left(\frac12V^2\right)
+=-\frac{1}{\rho}\vec V\cdot\nabla p
+-\vec V\cdot(2\vec\Omega\times\vec V)
++\vec V\cdot\vec G
++\vec V\cdot\vec F_r.
+$$</p>
+<p>科里奥利力与速度垂直，且 $\vec V\cdot\vec G=-gw$，于是</p>
+<p>$$
+\frac{dK}{dt}=
+\frac{d}{dt}\left(\frac12V^2\right)
+=-\frac{1}{\rho}\vec V\cdot\nabla p
+-gw
++\vec F_r\cdot\vec V.
+$$</p>
+<h1 id="闭合系统动能与全位能的转换"><a href="#闭合系统动能与全位能的转换" class="headerlink" title="闭合系统动能与全位能的转换"></a>闭合系统动能与全位能的转换</h1><p>有闭合系统下的动能方程：</p>
+<p>$$
+\frac{\partial}{\partial t}\int_M k\,dM
+=-\int_M\alpha\omega\,dM
+-\int_M D\,dM.
+$$<br>其中$D$：单位质量动能耗散率，$D&gt;0$；<br>以及全位能方程：</p>
+<p>$$
+\frac{\partial}{\partial t}\int_M e\,dM
+=\int_M\alpha\omega\,dM
++\int_M\dot Q\,dM.
+$$</p>
+<h2 id="闭合系统中的能量守恒"><a href="#闭合系统中的能量守恒" class="headerlink" title="闭合系统中的能量守恒"></a>闭合系统中的能量守恒</h2><p>闭合系统中，总能量方程：</p>
+<p>$$
+\frac{\partial}{\partial t}\int_M(k+e)\,dM
+=\int_M\dot Q\,dM-\int_M D\,dM.
+$$</p>
+<p>即在绝热、无摩擦时，$\dot Q=0$、$D=0$，总能量守恒：</p>
+<h2 id="转换项"><a href="#转换项" class="headerlink" title="转换项"></a>转换项</h2><p>有转换项<br>$$
+\int_M\alpha\omega\,dM.
+$$<br>说明：</p>
+<ul>
+<li><strong>垂直运动是必要条件</strong></li>
+<li><strong>转换结果取决于 $\alpha$ 与 $\omega$ 的相关性</strong>：物理本质就是：暖空气轻而上升，冷空气重而下沉，使系统质心下降，全位能减少，动能增加。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>$\alpha$ 与 $T$</th>
+<th>$\omega$</th>
+<th>转换</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$\alpha$ 大，$T$ 高</td>
+<td>$\omega&lt;0$</td>
+<td>动能向位能转换</td>
+</tr>
+<tr>
+<td>$\alpha$ 小，$T$ 低</td>
+<td>$\omega&gt;0$</td>
+<td>位能向动能转换</td>
+</tr>
+</tbody></table>
+<h1 id="有效位能"><a href="#有效位能" class="headerlink" title="有效位能"></a>有效位能</h1><p>定义：在一个<strong>闭合系统</strong>中，从当前状态通过<strong>绝热调整</strong>，达到一个<strong>层结稳定、等压面与等温面重合且呈水平分布</strong>的参考状态时，当前状态与参考状态的全位能之差，称为该系统的有效位能。</p>
+<p>有效位能计算方法：计算初始状态全位能与终态的全位能；气块法（终态到初态，气块反抗净浮力做功）</p>
+<p>最终得到<br>$$A^*=\int_{0}^{P_{0}} \frac{g}{2N^2}\left( \frac{\theta'}{\theta_{0}} \right)^2dP
+\approx \int_{0}^{P_{0}} \frac{g}{2N^2}\left( \frac{T'}{T_{0}} \right)^2dP
+$$<br>其中$\theta'$为气块到达z高度等压面后，与等压面平均位温的位温差；$T'$同理。<br>说明，有效位能取决于等压面上的位温差或温度差。<strong>有效位能与大气斜压性对应，斜压性越强则等压面上的位温差越大，有效位能越大。</strong></p>
+<h1 id="大气能量循环"><a href="#大气能量循环" class="headerlink" title="大气能量循环"></a>大气能量循环</h1><p>将实际大气运动拆分为：与大气环流相联系的纬向平均运动“流”，以及涡旋运动“波”</p>
+<h2 id="纬向平均运动"><a href="#纬向平均运动" class="headerlink" title="纬向平均运动"></a>纬向平均运动</h2><h3 id="纬向平均运动动能"><a href="#纬向平均运动动能" class="headerlink" title="纬向平均运动动能"></a>纬向平均运动动能</h3><p>中纬度大尺度运动近于地转运动，可以利用等高线的疏密近似表示风的大小。因此，沿纬圈平直又密集的等高线，其平均动能就比较大。</p>
+<p>$$\begin{aligned}
+\frac{\partial}{\partial t}\bar K^{*}
+&amp;=-\int_{M}\overline{\bar u\nabla\!\cdot\!\vec V'u'}+\overline{\bar v\nabla\!\cdot\!\vec V'v'}\,\mathrm{d}M
+-\int_{M}\overline{\alpha\omega}\,\mathrm{d}M
+-\int_{M}\bar D\,\mathrm{d}M
+=
+\{K',\bar K\}+\{\bar A,\bar K\}-\{\bar K,\bar D\}
+,\\[6pt]
+\end{aligned}
+$$</p>
+<h3 id="纬向平均有效位能"><a href="#纬向平均有效位能" class="headerlink" title="纬向平均有效位能"></a>纬向平均有效位能</h3><p>在一定纬带内，南北纬向平均温度差越大，平均有效位能就越大。例如，沿纬圈平直的等温线密集的锋区，可以造成南北平均温度差大，因而平均有效位能就多。<br>$$\begin{aligned}
+\frac{\partial}{\partial t}\bar A^{*}
+&amp;=-\frac{C_{P}}{[T]}\int_{M}\overline{\bar T\nabla\!\cdot\!\vec V'T'}\,\mathrm{d}M
++\int_{M}\overline{\alpha\omega}\,\mathrm{d}M
++\int_{M}\frac{\overline{\dot Q}\,\bar T}{[T]}\,\mathrm{d}M
+=\{A',\bar A\}+\{\bar K,\bar A\}+\{\dot{\bar Q},\bar A\}
+,\\[6pt]
+
+\end{aligned}
+$$</p>
+<h2 id="涡旋运动"><a href="#涡旋运动" class="headerlink" title="涡旋运动"></a>涡旋运动</h2><h3 id="涡旋动能"><a href="#涡旋动能" class="headerlink" title="涡旋动能"></a>涡旋动能</h3><p>扰动振幅大的密集等高线，其涡旋动能比较大。</p>
+<p>$$\begin{aligned}
+\frac{\partial}{\partial t}K'^{*}
+&amp;=\ \ \int_{M}\overline{\bar u\nabla\!\cdot\!\vec V'u'}+\overline{\bar v\nabla\!\cdot\!\vec V'v'}\,\mathrm{d}M
+-\int_{M}\overline{\alpha'\omega'}\,\mathrm{d}M
+-\int_{M}D'\,\mathrm{d}M
+=\{\bar K,K'\}+\{A',K'\}-\{K',D'\}
+,\\[6pt]
+\end{aligned}
+$$</p>
+<h3 id="涡旋有效位能"><a href="#涡旋有效位能" class="headerlink" title="涡旋有效位能"></a>涡旋有效位能</h3><p>等温线扰动振幅越大，涡动有效位能就越大。</p>
+<p>$$\begin{aligned}
+
+\frac{\partial}{\partial t}A'^{*}
+&amp;=\ \ \frac{C_{P}}{[T]}\int_{M}\overline{\bar T\nabla\!\cdot\!\vec V'T'}\,\mathrm{d}M
++\int_{M}\overline{\alpha'\omega'}\,\mathrm{d}M
++\int_{M}\frac{\dot Q'T'}{[T]}\,\mathrm{d}M 
+=\{\bar A,A'\}+\{K',A'\}+\{\dot Q',A'\}
+.
+\end{aligned}
+$$</p>
+<h2 id="理论大气能量转换"><a href="#理论大气能量转换" class="headerlink" title="理论大气能量转换"></a>理论大气能量转换</h2><p>根据上述的四个方程，则有理论大气能量转换</p>
+<p>$$
+\begin{array}{ccccccc}
+\overline{Q} &amp; \longrightarrow &amp; \overline{A}
+&amp; \longleftrightarrow &amp; \overline{K}
+&amp; \longrightarrow &amp; \overline{D} \\[10pt]
+&amp; &amp; \updownarrow &amp; &amp; \updownarrow &amp; &amp; \\[10pt]
+Q' &amp; \longrightarrow &amp; A'
+&amp; \longleftrightarrow &amp; K'
+&amp; \longrightarrow &amp; D'
+\end{array}
+$$</p>
+<h2 id="实际大气能量转换"><a href="#实际大气能量转换" class="headerlink" title="实际大气能量转换"></a>实际大气能量转换</h2><blockquote>
+<p><strong>考点 5</strong>：掌握实际大气中能量循环过程及物理机制。</p>
+</blockquote>
+<p>根据研究，实际大气的能量转换如下</p>
+<p>$$
+\begin{array}{ccccccc}
+\overline{Q} &amp; \longrightarrow &amp; \overline{A}
+&amp; \longrightarrow &amp; \overline{K}
+&amp; \longrightarrow &amp; \overline{D} \\[10pt]
+&amp; &amp; \downarrow &amp; &amp; \uparrow &amp; &amp; \\[10pt]
+Q' &amp; \longrightarrow &amp; A'
+&amp; \longrightarrow &amp; K'
+&amp; \longrightarrow &amp; D'
+\end{array}
+$$</p>
+<p>实际大气中的各能量及其转换项都可以用观测资料计算，用来诊断各能量间的相互转换。利用北半球观测资料进行诊断计算，可得到全年平均的实际大气能量循环。</p>
+<p>以下 $\{X,Y\}$ 表示两种能量之间的转换项，$\{X,Y\}&gt;0$ 表示 $X\to Y$；$[T]$ 为参考温度。</p>
+<h3 id="纬向平均非绝热加热与纬向平均有效位能"><a href="#纬向平均非绝热加热与纬向平均有效位能" class="headerlink" title="纬向平均非绝热加热与纬向平均有效位能"></a>纬向平均非绝热加热与纬向平均有效位能</h3><p>纬向平均非绝热加热与纬向平均有效位能之间的转换项为</p>
+<p>$$
+\{\bar Q,\bar A\}
+=\frac{1}{[T]}\int_M \bar T\,\dot{\bar Q}\,dM.
+$$</p>
+<p>它取决于 $\bar T$ 与 $\dot{\bar Q}$ 的空间相关性。</p>
+<p>若二者正相关，即暖区（$\bar T$ 大）加热（$\dot{\bar Q}&gt;0$）、冷区（$\bar T$ 小）冷却（$\dot{\bar Q}&lt;0$），则</p>
+<p>$$
+\{\bar Q,\bar A\}&gt;0
+\quad\Rightarrow\quad
+\bar Q\to\bar A.
+$$</p>
+<p><strong>物理意义：暖区加热、冷区冷却，使等压面上的温度差增大，平均有效位能增加。反之，若暖区冷却、冷区加热，温度分布趋于均匀，平均有效位能减小。</strong></p>
+<h3 id="扰动非绝热加热与扰动有效位能"><a href="#扰动非绝热加热与扰动有效位能" class="headerlink" title="扰动非绝热加热与扰动有效位能"></a>扰动非绝热加热与扰动有效位能</h3><p>扰动非绝热加热与扰动有效位能之间的转换项为</p>
+<p>$$
+\{\dot Q',A'\}
+=\frac{1}{[T]}\int_M T'\dot Q'\,dM.
+$$</p>
+<p>若 $T'$ 与 $\dot Q'$ 正相关，即暖异常（$T'$ 大）处加热（$\dot Q'&gt;0$）、冷异常（$T'$ 小）处冷却（$\dot Q'&lt;0$），则</p>
+<p>$$
+\{\dot Q',A'\}&gt;0
+\quad\Rightarrow\quad
+\dot Q'\to A'.
+$$</p>
+<p><strong>物理意义：暖异常处加热、冷异常处冷却，会增强温度扰动，使扰动有效位能增加；反之，若暖异常处冷却、冷异常处加热，温度扰动减弱，扰动有效位能减小。</strong></p>
+<h3 id="纬向平均有效位能与纬向平均动能"><a href="#纬向平均有效位能与纬向平均动能" class="headerlink" title="纬向平均有效位能与纬向平均动能"></a>纬向平均有效位能与纬向平均动能</h3><p>纬向平均有效位能与纬向平均动能之间的转换项为</p>
+<p>$$
+\{\bar A,\bar K\}
+=-\int_M \bar\alpha\bar\omega\,dM.
+$$</p>
+<p>它取决于 $\bar\alpha$ 与 $\bar\omega$ 的相关性：通过冷暖空气的上升、下沉运动，引起平均有效位能与平均动能之间的转换。</p>
+<p>这里使用的是纬向平均垂直运动 $\bar\omega$，对应经圈环流中的垂直运动。若暖空气上升、冷空气下沉，则 $\bar\alpha\bar\omega&lt;0$，$\{\bar A,\bar K\}&gt;0$，即 $\bar A\to\bar K$。</p>
+<h3 id="纬向平均有效位能与扰动有效位能"><a href="#纬向平均有效位能与扰动有效位能" class="headerlink" title="纬向平均有效位能与扰动有效位能"></a>纬向平均有效位能与扰动有效位能</h3><p>纬向平均有效位能与扰动有效位能之间的转换项为</p>
+<p>$$
+\{\bar A,A'\}
+=\frac{c_p}{[T]}\int_M
+\bar T\,\nabla\cdot\left(\overline{\vec V'T'}\right)dM.
+$$</p>
+<p>写成分量形式：</p>
+<p>$$
+\{\bar A,A'\}
+=\frac{c_p}{[T]}\int_M \bar T\left[
+\frac{\partial}{\partial y}\left(\overline{v'T'}\right)
++\frac{\partial}{\partial p}\left(\overline{\omega'T'}\right)
+\right]dM.
+$$</p>
+<p>其中：</p>
+<ul>
+<li><p>$\bar T$：纬向平均温度的南北分布；</p>
+</li>
+<li><p>$\overline{v'T'}$：扰动引起的热量南北输送；</p>
+</li>
+<li><p>$\overline{\omega'T'}$：扰动引起的热量垂直输送；</p>
+</li>
+<li><p>$\overline{\vec V'T'}$：由涡旋运动引起的、通过某一纬圈的热量南北输送；</p>
+</li>
+<li><p>$\nabla\cdot\overline{\vec V'T'}$：由涡旋运动引起的某个纬带内热量的净输出量。</p>
+</li>
+<li><p>若 $\nabla\cdot\overline{\vec V'T'}&gt;0$，则该纬带内热量净输出；</p>
+</li>
+<li><p>若 $\nabla\cdot\overline{\vec V'T'}&lt;0$，则该纬带内热量净输入。</p>
+</li>
+</ul>
+<p>若 $\bar T$ 与 $\nabla\cdot\overline{\vec V'T'}$ 正相关，即暖纬带（$\bar T$ 大）有热量净输出、冷纬带（$\bar T$ 小）有热量净输入，则</p>
+<p>$$
+\{\bar A,A'\}&gt;0
+\quad\Rightarrow\quad
+\bar A\to A'.
+$$</p>
+<p>物理意义：暖纬带内有热量净输出，冷纬带内有热量净输入，导致纬向平均温度沿南北方向分布趋于均匀，南北温差减小，平均有效位能减小；同时，在同一纬圈上产生冷中心和暖中心，纬圈上的温差增大，扰动有效位能增加。</p>
+<h3 id="扰动有效位能与扰动动能"><a href="#扰动有效位能与扰动动能" class="headerlink" title="扰动有效位能与扰动动能"></a>扰动有效位能与扰动动能</h3><p>扰动有效位能与扰动动能之间的转换项为</p>
+<p>$$
+\{A',K'\}
+=-\int_M \overline{\alpha'\omega'}\,dM.
+$$</p>
+<p>它取决于 $\alpha'$ 与 $\omega'$ 的相关性，通过扰动冷暖空气的上升、下沉运动，引起扰动有效位能与扰动动能之间的转换。若暖空气上升、冷空气下沉，则 $\overline{\alpha'\omega'}&lt;0$，$\{A',K'\}&gt;0$，即 $A'\to K'$。</p>
+<p>这里使用的是涡旋运动中的垂直运动 $\omega'$，对应天气系统中的扰动垂直运动。$\{\bar A,\bar K\}$ 对应经圈环流中的 $\bar\omega$，$\{A',K'\}$ 对应天气系统中的 $\omega'$。</p>
+<h3 id="扰动动能与平均纬向动能"><a href="#扰动动能与平均纬向动能" class="headerlink" title="扰动动能与平均纬向动能"></a>扰动动能与平均纬向动能</h3><p>扰动动能与平均纬向动能之间的转换项为</p>
+<p>$$
+\{\bar K,K'\}
+=-\int_M\left(
+\bar u\,\nabla\cdot\overline{\vec V'u'}
++\bar v\,\nabla\cdot\overline{\vec V'v'}
+\right)dM.
+$$</p>
+<p>实际大尺度大气运动中，$|\bar u|\gg|\bar v|$，即以西风环流为主，因此上面积分中以第一项为主。</p>
+<p>$\nabla\cdot\overline{\vec V'u'}$ 表示由涡旋运动引起的某个纬带内西风动量的净输送量：</p>
+<ul>
+<li>若 $\nabla\cdot\overline{\vec V'u'}&gt;0$，则该纬带内有西风动量的净输出；</li>
+<li>若 $\nabla\cdot\overline{\vec V'u'}&lt;0$，则该纬带内有西风动量的净输入。</li>
+</ul>
+<p>转换取决于 $\bar u$ 与 $\nabla\cdot\overline{\vec V'u'}$ 的相关性。若二者正相关，即西风带（$\bar u&gt;0$）有净输出、东风带（$\bar u&lt;0$）有净输入，则</p>
+<p>$$
+\{\bar K,K'\}&gt;0
+\quad\Rightarrow\quad
+\bar K\to K'.
+$$</p>
+<p>物理意义：西风带内有净的西风动量输出，则该纬带内西风动量减少；东风带内有净的西风动量输入，则该纬带内西风动量增加，东风动量减少。当 $|\bar u|$ 减小时，原来西风带中的西风减弱，原来东风带中的东风也减弱，平均运动动能减弱，说明平均运动动能 $\bar K$ 转换为扰动运动动能 $K'$。</p>
+<p>即</p>
+<p>$$
+|\bar u|\downarrow
+\quad\Rightarrow\quad
+\bar K\downarrow
+\quad\Rightarrow\quad
+\bar K\to K'.
+$$</p>
+<p>因此，涡旋运动引起的物理量输送很重要。</p>
+<h3 id="动能与摩擦耗散"><a href="#动能与摩擦耗散" class="headerlink" title="动能与摩擦耗散"></a>动能与摩擦耗散</h3><p>纬向平均运动的耗散项为</p>
+<p>$$
+\bar D=-\int_M \overline{\vec F_k}\cdot\bar{\vec V}\,dM.
+$$</p>
+<p>涡旋运动的耗散项为</p>
+<p>$$
+D'=-\int_M \overline{\vec F_k'}\cdot\vec V'\,dM.
+$$</p>
+<p>耗散主要通过边界层进行，主要机制是 Ekman 抽吸和二级环流。</p>
+<p>不同于一般的摩擦耗散（速度越大，耗散越多），实际大气中 $\bar K&gt;K'$，但平均运动的耗散并不比涡旋运动多。因为自由大气中的耗散是通过边界层进行的，而不是在自由大气内部。因此，耗散的大小更取决于平均运动和涡旋运动哪一个产生的 Ekman 抽吸大，即哪一个的涡度 $\zeta$ 大。</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%B0%94%E7%A7%91%E5%AD%A6/">大气科学</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E5%AD%A6/">大气能量学</a></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/11/12/%E9%9A%8F%E7%AC%941/" title="随笔1"><img class="cover" src="/img/text_pic.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">随笔1</div></div><div class="info-2"><div class="info-item-1">即使完成了，也只感到不满意，明明写出的是心中所想，却好似吐出的是残渣余孽一样。 </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/11/10/%E5%A4%A7%E6%B0%94%E8%A1%8C%E6%98%9F%E8%BE%B9%E7%95%8C%E5%B1%82/" title="大气行星边界层：湍流与平均运动方程"><img class="cover" src="/img/text_pic.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-11-10</div><div class="info-item-2">大气行星边界层：湍流与平均运动方程</div></div><div class="info-2"><div class="info-item-1">介绍湍流运动的基本概念、平均运动方程、湍流应力及 Prandtl 混合长理论。</div></div></div></a><a class="pagination-related" href="/2026/11/11/%E5%A4%A7%E6%B0%94%E8%A1%8C%E6%98%9F%E8%BE%B9%E7%95%8C%E5%B1%82%E6%94%B9/" title="大气行星边界层（改）"><img class="cover" src="/img/text_pic.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-11-11</div><div class="info-item-2">大气行星边界层（改）</div></div><div class="info-2"><div class="info-item-1">这一篇更注重本章的整体思路</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DevilA</div><div class="author-info-description">保持好奇，持续学习。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Xamd545"><i class="fab fa-github"></i><span>访问我的 GitHub</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Xamd545" target="_blank" title="GitHub"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客刚刚建立，新的文章正在路上。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%BD%E9%87%8F%E7%9A%84%E5%BD%A2%E6%80%81"><span class="toc-number">1.</span> <span class="toc-text">能量的形态</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E8%83%BD"><span class="toc-number">1.1.</span> <span class="toc-text">位能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E8%83%BD"><span class="toc-number">1.2.</span> <span class="toc-text">内能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E8%83%BD"><span class="toc-number">1.3.</span> <span class="toc-text">动能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BD%9C%E7%83%AD%E8%83%BD"><span class="toc-number">1.4.</span> <span class="toc-text">潜热能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E8%83%BD%E3%80%81%E5%86%85%E8%83%BD%E4%B8%8E%E5%85%A8%E4%BD%8D%E8%83%BD"><span class="toc-number">1.5.</span> <span class="toc-text">位能、内能与全位能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E9%99%90%E9%AB%98%E6%B0%94%E6%9F%B1%EF%BC%9A%E5%85%A8%E4%BD%8D%E8%83%BD"><span class="toc-number">1.5.1.</span> <span class="toc-text">无限高气柱：全位能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E9%AB%98%E6%B0%94%E6%9F%B1"><span class="toc-number">1.5.2.</span> <span class="toc-text">有限高气柱</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E8%B4%A8%E7%82%B9%E5%8A%A8%E8%83%BD%E6%96%B9%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">推导质点动能方程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AD%E5%90%88%E7%B3%BB%E7%BB%9F%E5%8A%A8%E8%83%BD%E4%B8%8E%E5%85%A8%E4%BD%8D%E8%83%BD%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.</span> <span class="toc-text">闭合系统动能与全位能的转换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%90%88%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E8%83%BD%E9%87%8F%E5%AE%88%E6%81%92"><span class="toc-number">3.1.</span> <span class="toc-text">闭合系统中的能量守恒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E9%A1%B9"><span class="toc-number">3.2.</span> <span class="toc-text">转换项</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%89%E6%95%88%E4%BD%8D%E8%83%BD"><span class="toc-number">4.</span> <span class="toc-text">有效位能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E5%BE%AA%E7%8E%AF"><span class="toc-number">5.</span> <span class="toc-text">大气能量循环</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%AC%E5%90%91%E5%B9%B3%E5%9D%87%E8%BF%90%E5%8A%A8"><span class="toc-number">5.1.</span> <span class="toc-text">纬向平均运动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%AC%E5%90%91%E5%B9%B3%E5%9D%87%E8%BF%90%E5%8A%A8%E5%8A%A8%E8%83%BD"><span class="toc-number">5.1.1.</span> <span class="toc-text">纬向平均运动动能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%AC%E5%90%91%E5%B9%B3%E5%9D%87%E6%9C%89%E6%95%88%E4%BD%8D%E8%83%BD"><span class="toc-number">5.1.2.</span> <span class="toc-text">纬向平均有效位能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%A1%E6%97%8B%E8%BF%90%E5%8A%A8"><span class="toc-number">5.2.</span> <span class="toc-text">涡旋运动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%A1%E6%97%8B%E5%8A%A8%E8%83%BD"><span class="toc-number">5.2.1.</span> <span class="toc-text">涡旋动能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%A1%E6%97%8B%E6%9C%89%E6%95%88%E4%BD%8D%E8%83%BD"><span class="toc-number">5.2.2.</span> <span class="toc-text">涡旋有效位能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E8%BD%AC%E6%8D%A2"><span class="toc-number">5.3.</span> <span class="toc-text">理论大气能量转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E8%BD%AC%E6%8D%A2"><span class="toc-number">5.4.</span> <span class="toc-text">实际大气能量转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%AC%E5%90%91%E5%B9%B3%E5%9D%87%E9%9D%9E%E7%BB%9D%E7%83%AD%E5%8A%A0%E7%83%AD%E4%B8%8E%E7%BA%AC%E5%90%91%E5%B9%B3%E5%9D%87%E6%9C%89%E6%95%88%E4%BD%8D%E8%83%BD"><span class="toc-number">5.4.1.</span> <span class="toc-text">纬向平均非绝热加热与纬向平均有效位能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B0%E5%8A%A8%E9%9D%9E%E7%BB%9D%E7%83%AD%E5%8A%A0%E7%83%AD%E4%B8%8E%E6%89%B0%E5%8A%A8%E6%9C%89%E6%95%88%E4%BD%8D%E8%83%BD"><span class="toc-number">5.4.2.</span> <span class="toc-text">扰动非绝热加热与扰动有效位能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%AC%E5%90%91%E5%B9%B3%E5%9D%87%E6%9C%89%E6%95%88%E4%BD%8D%E8%83%BD%E4%B8%8E%E7%BA%AC%E5%90%91%E5%B9%B3%E5%9D%87%E5%8A%A8%E8%83%BD"><span class="toc-number">5.4.3.</span> <span class="toc-text">纬向平均有效位能与纬向平均动能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%AC%E5%90%91%E5%B9%B3%E5%9D%87%E6%9C%89%E6%95%88%E4%BD%8D%E8%83%BD%E4%B8%8E%E6%89%B0%E5%8A%A8%E6%9C%89%E6%95%88%E4%BD%8D%E8%83%BD"><span class="toc-number">5.4.4.</span> <span class="toc-text">纬向平均有效位能与扰动有效位能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B0%E5%8A%A8%E6%9C%89%E6%95%88%E4%BD%8D%E8%83%BD%E4%B8%8E%E6%89%B0%E5%8A%A8%E5%8A%A8%E8%83%BD"><span class="toc-number">5.4.5.</span> <span class="toc-text">扰动有效位能与扰动动能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B0%E5%8A%A8%E5%8A%A8%E8%83%BD%E4%B8%8E%E5%B9%B3%E5%9D%87%E7%BA%AC%E5%90%91%E5%8A%A8%E8%83%BD"><span class="toc-number">5.4.6.</span> <span class="toc-text">扰动动能与平均纬向动能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E8%83%BD%E4%B8%8E%E6%91%A9%E6%93%A6%E8%80%97%E6%95%A3"><span class="toc-number">5.4.7.</span> <span class="toc-text">动能与摩擦耗散</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/11/14/%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E5%AD%A6/" title="大气能量学"><img src="/img/text_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="大气能量学"/></a><div class="content"><a class="title" href="/2026/11/14/%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E5%AD%A6/" title="大气能量学">大气能量学</a><time datetime="2026-11-13T16:00:00.000Z" title="发表于 2026-11-14 00:00:00">2026-11-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/11/12/%E9%9A%8F%E7%AC%941/" title="随笔1"><img src="/img/text_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="随笔1"/></a><div class="content"><a class="title" href="/2026/11/12/%E9%9A%8F%E7%AC%941/" title="随笔1">随笔1</a><time datetime="2026-11-11T16:00:00.000Z" title="发表于 2026-11-12 00:00:00">2026-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/11/11/%E5%A4%A7%E6%B0%94%E8%A1%8C%E6%98%9F%E8%BE%B9%E7%95%8C%E5%B1%82%E6%94%B9/" title="大气行星边界层（改）"><img src="/img/text_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="大气行星边界层（改）"/></a><div class="content"><a class="title" href="/2026/11/11/%E5%A4%A7%E6%B0%94%E8%A1%8C%E6%98%9F%E8%BE%B9%E7%95%8C%E5%B1%82%E6%94%B9/" title="大气行星边界层（改）">大气行星边界层（改）</a><time datetime="2026-11-10T16:00:00.000Z" title="发表于 2026-11-11 00:00:00">2026-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/11/10/%E5%A4%A7%E6%B0%94%E8%A1%8C%E6%98%9F%E8%BE%B9%E7%95%8C%E5%B1%82/" title="大气行星边界层：湍流与平均运动方程"><img src="/img/text_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="大气行星边界层：湍流与平均运动方程"/></a><div class="content"><a class="title" href="/2026/11/10/%E5%A4%A7%E6%B0%94%E8%A1%8C%E6%98%9F%E8%BE%B9%E7%95%8C%E5%B1%82/" title="大气行星边界层：湍流与平均运动方程">大气行星边界层：湍流与平均运动方程</a><time datetime="2026-11-10T09:08:53.000Z" title="发表于 2026-11-10 17:08:53">2026-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/11/07/welcome/" title="你好，这里是 DevilA"><img src="/img/cover-default.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="你好，这里是 DevilA"/></a><div class="content"><a class="title" href="/2026/11/07/welcome/" title="你好，这里是 DevilA">你好，这里是 DevilA</a><time datetime="2026-11-07T15:20:00.000Z" title="发表于 2026-11-07 23:20:00">2026-11-07</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By DevilA</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.2</a></span></div><div class="footer_custom_text">记录学习、技术与生活</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.2"></script><script src="/js/main.js?v=5.7.2"></script><div class="js-pjax"><script>(() => {
+  const changeScriptToMath = article => {
+    article.querySelectorAll('script[type^="math/tex"]').forEach(el => {
+      const display = /mode=display/.test(el.type)
+      const node = document.createElement(display ? 'div' : 'span')
+      node.textContent = display
+        ? `$$${el.textContent}$$`
+        : `$${el.textContent}$`
+      el.parentNode.replaceChild(node, el)
+    })
+  }
+
+  const loadMathjax = () => {
+    const article = document.getElementById('article-container')
+    if (!article || article.querySelector('.hbe-container')) return
+    changeScriptToMath(article)
+
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem',
+            'ui/lazy'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          lazyMargin: '200px',
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.typesetClear()
+      MathJax.typesetPromise([ article ])
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  if (window.pjax) loadMathjax()
+  else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadMathjax)
+  else loadMathjax()
+})()</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.7.2"></script></div></div></body></html>
