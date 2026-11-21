@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>每日n积</title>
+      <link href="/2026/11/21/%E6%AF%8F%E6%97%A5n%E7%A7%AF/"/>
+      <url>/2026/11/21/%E6%AF%8F%E6%97%A5n%E7%A7%AF/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>求 $\displaystyle\int x^{2}\sqrt{1+x^{2}}\,\mathrm{d}x$。</p></blockquote><p><strong>① 换元。</strong> 令 $x=\tan t$，$t\in\left(-\dfrac{\pi}{2},\dfrac{\pi}{2}\right)$，则<br>$$\mathrm{d}x=\sec^{2}t\,\mathrm{d}t,\qquad \sqrt{1+x^{2}}=\sec t\ (&gt;0),$$<br>于是<br>$$\int x^{2}\sqrt{1+x^{2}}\,\mathrm{d}x=\int\tan^{2}t\,\sec^{3}t\,\mathrm{d}t=\int(\sec^{2}t-1)\sec^{3}t\,\mathrm{d}t=\int\sec^{5}t\,\mathrm{d}t-\int\sec^{3}t\,\mathrm{d}t.$$</p><p>记 $I_{n}=\displaystyle\int\sec^{n}t\,\mathrm{d}t$，则原积分 $=I_{5}-I_{3}$。</p><p><strong>② 先算 $I_{3}$：$\sec t$ 与 $\tan t$ 分部。</strong><br>$$I_{3}=\int\sec t\,\mathrm{d}(\tan t)=\sec t\tan t-\int\tan^{2}t\sec t\,\mathrm{d}t=\sec t\tan t-\int(\sec^{2}t-1)\sec t\,\mathrm{d}t,$$<br>即 $I_{3}=\sec t\tan t-I_{3}+\ln|\sec t+\tan t|$，解得<br>$$I_{3}=\frac{1}{2}\left[\sec t\tan t+\ln|\sec t+\tan t|\right].$$</p><p><strong>③ 再算 $I_{5}$：写成 $I_{3}$ 的形式。</strong> 同样分部（把 $\sec^{2}t$ 凑进微分）：<br>$$I_{5}=\int\sec^{3}t\,\mathrm{d}(\tan t)=\sec^{3}t\tan t-3\int\tan^{2}t\sec^{3}t\,\mathrm{d}t=\sec^{3}t\tan t-3(I_{5}-I_{3}),$$<br>解得<br>$$I_{5}=\frac{1}{4}\sec^{3}t\tan t+\frac{3}{4}I_{3}.$$</p><p><strong>④ 合并。</strong> $I_{5}-I_{3}$ 中 $I_{3}$ 的系数 $\dfrac34-1=-\dfrac14$，一次消去最高次：<br>$$\int x^{2}\sqrt{1+x^{2}}\,\mathrm{d}x=I_{5}-I_{3}=\frac{1}{4}\sec^{3}t\tan t-\frac{1}{4}I_{3}=\frac{1}{4}\sec^{3}t\tan t-\frac{1}{8}\left[\sec t\tan t+\ln|\sec t+\tan t|\right]+C.$$</p><p><strong>⑤ 换回 $x$。</strong> 由 $x=\tan t$ 得 $\sec t=\sqrt{1+x^{2}}$；又 $x+\sqrt{1+x^{2}}&gt;0$，可去掉绝对值：<br>$$\frac{1}{4}x(1+x^{2})^{3/2}-\frac{1}{8}x\sqrt{1+x^{2}}=\frac{1}{8}x\sqrt{1+x^{2}}\left[2(1+x^{2})-1\right]=\frac{1}{8}x(2x^{2}+1)\sqrt{1+x^{2}},$$<br>所以<br>$$\int x^{2}\sqrt{1+x^{2}}\,\mathrm{d}x=\frac{1}{8}\left[x(2x^{2}+1)\sqrt{1+x^{2}}-\ln\left(x+\sqrt{1+x^{2}}\right)\right]+C.$$</p><hr><blockquote><p>计算<br>$$I=\iint_{D}\frac{xy}{1+x^{2}-y^{2}}\,\mathrm{d}x\,\mathrm{d}y,\qquad D=\{(x,y)\mid x^{2}+y^{2}\le1,\ 0\le y\le x\}.$$</p></blockquote><p><strong>法一：极坐标（外层 $r$，内层 $\theta$）</strong></p><p>$D$：$0\le\theta\le\dfrac{\pi}{4}$，$0\le r\le1$，$\mathrm{d}x\,\mathrm{d}y=r\,\mathrm{d}r\,\mathrm{d}\theta$，且 $\dfrac{xy}{1+x^{2}-y^{2}}=\dfrac{r^{2}\sin\theta\cos\theta}{1+r^{2}\cos2\theta}$。</p><p>先积 $\theta$（令 $u=\cos2\theta$）：<br>$$\int_{0}^{\pi/4}\frac{\sin\theta\cos\theta}{1+r^{2}\cos2\theta}\,\mathrm{d}\theta=\frac{1}{4}\int_{0}^{1}\frac{\mathrm{d}u}{1+r^{2}u}=\frac{\ln(1+r^{2})}{4r^{2}}.$$</p><p>再积 $r$：<br>$$I=\int_{0}^{1}r^{3}\cdot\frac{\ln(1+r^{2})}{4r^{2}}\,\mathrm{d}r=\frac{1}{8}\int_{1}^{2}\ln t\,\mathrm{d}t=\frac{2\ln2-1}{8}.$$</p><p><strong>法二：直角坐标（外层 $y$，内层 $x$）</strong></p><p>$D$：$0\le y\le\dfrac{1}{\sqrt2}$，$y\le x\le\sqrt{1-y^{2}}$。</p><p>内层（$u=1+x^{2}-y^{2}$，$\mathrm{d}u=2x\,\mathrm{d}x$）：<br>$$\int_{y}^{\sqrt{1-y^{2}}}\frac{xy}{1+x^{2}-y^{2}}\,\mathrm{d}x=\frac{y}{2}\Bigl[\ln(1+x^{2}-y^{2})\Bigr]_{y}^{\sqrt{1-y^{2}}}=\frac{y}{2}\ln\bigl[2(1-y^{2})\bigr].$$</p><p>外层（令 $t=2(1-y^{2})$）：<br>$$I=\int_{0}^{1/\sqrt2}\frac{y}{2}\ln\bigl[2(1-y^{2})\bigr]\,\mathrm{d}y=\frac{1}{8}\int_{1}^{2}\ln t\,\mathrm{d}t=\frac{2\ln2-1}{8}.$$</p><p><strong>答案</strong>：$\dfrac{2\ln2-1}{8}$</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 高数 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 积分 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>大气能量学</title>
       <link href="/2026/11/14/%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E5%AD%A6/"/>
       <url>/2026/11/14/%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E5%AD%A6/</url>
