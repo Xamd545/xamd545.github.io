@@ -1,0 +1,1271 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>大气波动学 | DevilA</title><meta name="author" content="DevilA"><meta name="copyright" content="DevilA"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="介绍大气波动学的基本信息，包括声波、重力波、惯性波、Rossby波等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大气波动学">
+<meta property="og:url" content="https://xamd545.github.io/2026/11/22/%E5%A4%A7%E6%B0%94%E6%B3%A2%E5%8A%A8%E5%AD%A6/index.html">
+<meta property="og:site_name" content="DevilA">
+<meta property="og:description" content="介绍大气波动学的基本信息，包括声波、重力波、惯性波、Rossby波等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xamd545.github.io/img/text_pic.jpg">
+<meta property="article:published_time" content="2026-11-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-11-22T09:42:13.940Z">
+<meta property="article:author" content="DevilA">
+<meta property="article:tag" content="大气科学">
+<meta property="article:tag" content="大气波动学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xamd545.github.io/img/text_pic.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "大气波动学",
+  "url": "https://xamd545.github.io/2026/11/22/%E5%A4%A7%E6%B0%94%E6%B3%A2%E5%8A%A8%E5%AD%A6/",
+  "image": "https://xamd545.github.io/img/text_pic.jpg",
+  "datePublished": "2026-11-21T16:00:00.000Z",
+  "dateModified": "2026-11-22T09:42:13.940Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "DevilA",
+      "url": "https://xamd545.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://xamd545.github.io/2026/11/22/%E5%A4%A7%E6%B0%94%E6%B3%A2%E5%8A%A8%E5%AD%A6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=5.7.2"><link rel="stylesheet" href="/fontawesome/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        try {
+          const data = { value }
+
+          if (ttl != null) {
+            data.expiry = Date.now() + ttl * 86400000
+          }
+
+          localStorage.setItem(key, JSON.stringify(data))
+        } catch (e) {
+          console.error(e)
+        }
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const start = 6
+              const end = 18
+              const isNight =
+                start < end
+                    ? hour < start || hour >= end
+                    : hour >= start || hour < end
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '大气波动学',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-color: #f4f7f8;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/text_pic.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">DevilA</span></a><a class="nav-page-title" href="/"><span class="site-name">大气波动学</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">大气波动学</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-11-21T16:00:00.000Z" title="发表于 2026-11-22 00:00:00">2026-11-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-11-22T09:42:13.940Z" title="更新于 2026-11-22 17:42:13">2026-11-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/">专业课</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>这个笔记（除Rossby波部分）目前不是很满意。应该会修改。<br>11&#x2F;22</p>
+<hr>
+<h1 id="波动的基本概念"><a href="#波动的基本概念" class="headerlink" title="波动的基本概念"></a>波动的基本概念</h1><h2 id="波动定义"><a href="#波动定义" class="headerlink" title="波动定义"></a>波动定义</h2><p>波动：质点受力的作用围绕某平衡位置振动，振动在空间的传播<br>讨论波动最主要的就是讨论波动的<strong>振荡机制与传播机制</strong></p>
+<h2 id="波参数"><a href="#波参数" class="headerlink" title="波参数"></a>波参数</h2><h3 id="一维波动"><a href="#一维波动" class="headerlink" title="一维波动"></a>一维波动</h3><p><strong>振幅 $A$</strong>：物体离开平衡位置的最大位移。<br><strong>波长 $L$</strong>：$L=2\pi/k$，相邻两个同位相点间的距离，即一个完整波形的长度。<br><strong>周期 $T$</strong>：质点完成一个全振动需要的时间。<br><strong>波数 $k$</strong>：$k=2\pi/L$，即 $2\pi$ 距离内波的数目。<br><strong>圆频率 $\omega$</strong>：$\omega=2\pi/T$，即 $2\pi$ 时间内质点完成全振动的次数。<br><strong>位相 $\theta$</strong>：波在 $x$ 轴上各点各时刻的位置；$\alpha$ 为初位相。</p>
+<p>$$
+\theta=kx-\omega t+\alpha
+$$</p>
+<p><strong>等位相面</strong>：位相相同的点构成的面，</p>
+<p>$$
+\theta=kx-\omega t+\alpha=\text{常数}
+$$</p>
+<p><strong>波速（相速度）$c$</strong>：等位相线（等位相面）的移动速度，即槽脊的移速；天气系统的移动问题也就是求解波速 $c$ 的问题。$$c=\frac{L}{T}=\frac{\omega}{k}$$</p>
+<h3 id="二维波动"><a href="#二维波动" class="headerlink" title="二维波动"></a>二维波动</h3><p>位相$\theta=kx+ly-\omega t+\alpha$<br>波矢$\vec{K}=k \vec{i}+l \vec{j}=\nabla \theta$<br>相速度$$\vec{c}=\frac{\omega}{K^2}\vec{K}=\frac{\omega}{k^2+l^2}(k \vec{i}+l \vec{j})$$<br>各个方向的相速度<br>$$c_{x}=\frac{\omega}{k}, \quad c_{y}=\frac{\omega}{l}$$<br>则有$$\vec{c} \neq c_{x} \vec{i}+ c_{y} \vec{j}$$<br>群速度：对于频散介质，波群的传播速度（即能量的传播速度）与位相的传播速度不一致，波群的传播速度称为群速度。$$\vec{c_{k}}=\frac{\partial \omega}{\partial k}\vec{i}+\frac{\partial \omega}{\partial l}\vec{j}$$<br>上游效应：波动在传播过程中，会通过能量频散作用，上游波动的能量先于波动本身到达下游，在下游激发新的波动或加强下游原有波动。（<strong>上游激发下游</strong>）</p>
+<p>频散强度：</p>
+<p>三维波动类似二维波动</p>
+<hr>
+<h1 id="微扰动与线性化方法"><a href="#微扰动与线性化方法" class="headerlink" title="微扰动与线性化方法"></a>微扰动与线性化方法</h1><hr>
+<h1 id="声波"><a href="#声波" class="headerlink" title="声波"></a>声波</h1><h2 id="物理机制"><a href="#物理机制" class="headerlink" title="物理机制"></a>物理机制</h2><p>假设<strong>绝热</strong>过程：空气块受压缩，产生水平辐合，根据连续方程，密度增大；由于是热过程，气压增大；产生向左、向右的气压梯度力AB区空气块受压缩，空气向右加速运动<br><strong>传播机制</strong>：AB区辐散，密度、气压减小，同时，BC区空气受到压缩，密度、气压增大，在BC区域产生了向左和向右的压力梯度力，使得BC区域的右侧又产生了新的压缩区…、<br><strong>振荡机制（回复机制）</strong>：BC区域产生向左的气压梯度力，对向右运动的AB区空气块施加了回复力，则AB区空气向右运动速度减小，最终使其向左运动&gt;AB区空气再次受到压缩，空气辐合….这样循环往复，管子中出现了压缩-膨胀-压缩的声波。</p>
+<p>条件：<strong>大气可压缩性</strong><br>传播机制：辐合辐散交替变化</p>
+<h2 id="物理模型"><a href="#物理模型" class="headerlink" title="物理模型"></a>物理模型</h2><ul>
+<li>大气可压缩</li>
+<li>大气运动仅局限在x轴：略去横波</li>
+<li>不计科氏力：略去如惯性波，大气长波</li>
+<li>膨胀与压缩是绝热过程</li>
+</ul>
+<h2 id="求解过程"><a href="#求解过程" class="headerlink" title="求解过程"></a>求解过程</h2><p>从略去科氏力与摩擦力的x方向的运动方程与连续方程出发，引入状态方程与绝热条件下的热力学方程，整理得到</p>
+<p>$$
+\begin{cases}
+\dfrac{\partial P}{\partial t}+u\dfrac{\partial P}{\partial x}+\kappa P\dfrac{\partial u}{\partial x}=0,\\[12pt]
+\dfrac{\partial u}{\partial t}+u\dfrac{\partial u}{\partial x}+\dfrac{1}{\rho}\dfrac{\partial P}{\partial x}=0.
+\end{cases}
+$$<br>其中$\kappa=\frac{c_{p}}{c_{v}}$<br>线性化，设<br>$$P=\bar{P}+P',\quad u=\bar{u}+u',\quad \rho=\bar{\rho}+\rho'$$<br>其中基本量均为常值，且有<br>$$\frac{1}{\rho}=
+\frac{1}{\bar{\rho}}\cdot \frac{1}{1+\frac{\rho'}{\bar{\rho}}}
+\approx \frac{1}{\bar{\rho}}\cdot \left( 1-\frac{\rho'}{\bar{\rho}} \right)
+=\frac{1}{\bar{\rho}}-\frac{\rho'}{\bar{\rho}^2}$$<br>其中应用了$(1+x)^\alpha=1+\alpha x, \quad x\rightarrow 0$</p>
+<p>得到频散关系<br>$$\omega=\bar{u}k\pm \sqrt{ \frac{\kappa  \bar{P}}{\bar{\rho}}}k$$</p>
+<p>波速度等于群速度<br>$$c=c_g=\bar{u}\pm \sqrt{ \frac{\kappa \bar{P}}{\bar{\rho}} }=\bar{u} \pm \sqrt{ \kappa R \bar{T} }$$</p>
+<h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><ul>
+<li>声波线性叠加在基本气流之上，且双向传播</li>
+<li>非频散波</li>
+<li>波速$c$取决于$\kappa$，即声速的传播取决于介质</li>
+<li>是快波，约$10^2m/s$</li>
+<li>高频波</li>
+<li>滤波方法：大气不可压；或水平无辐散且地转近似；或静力平衡（略去垂直向声波）</li>
+<li>Lamb波为考虑地球旋转作用下，在静力平衡大气中沿水平方向传播的声波</li>
+</ul>
+<hr>
+<h1 id="重力波，惯性波，重力惯性波"><a href="#重力波，惯性波，重力惯性波" class="headerlink" title="重力波，惯性波，重力惯性波"></a>重力波，惯性波，重力惯性波</h1><p>重力波：考虑重力作用的波动</p>
+<p>惯性波：考虑科氏力作用的波动</p>
+<h2 id="重力外波"><a href="#重力外波" class="headerlink" title="重力外波"></a>重力外波</h2><blockquote>
+<p>23年真题</p>
+</blockquote>
+<p>发生在自由表面；</p>
+<p>最终得到频散关系<br>$$\omega=(\bar{u} \pm \sqrt{ gH })k$$<br>具有以下特性</p>
+<ul>
+<li>非频散波，相速度等于群速度</li>
+<li>双向传播；叠加在基本气流之上</li>
+<li>取$g \approx 10m\cdot s^{-1}$以及$H \approx 10km$，则波速约为$300m\cdot s^{-1}$，为快波</li>
+<li>滤波条件：水平无辐散或者准地转近似；没有自由表面；将大气运动限制在平面内</li>
+</ul>
+<h2 id="重力惯性外波"><a href="#重力惯性外波" class="headerlink" title="重力惯性外波"></a>重力惯性外波</h2><blockquote>
+<p>26年真题</p>
+</blockquote>
+<p>从旋转的浅水方程组出发，</p>
+<p>$$
+\begin{cases}
+\dfrac{\partial u}{\partial t}+u\dfrac{\partial u}{\partial x}+v\dfrac{\partial u}{\partial y}-fv=-g\dfrac{\partial h}{\partial x},\\[12pt]
+\dfrac{\partial v}{\partial t}+u\dfrac{\partial v}{\partial x}+v\dfrac{\partial v}{\partial y}+fu=-g\dfrac{\partial h}{\partial y},\\[12pt]
+\dfrac{\partial h}{\partial t}+\dfrac{\partial(hu)}{\partial x}+\dfrac{\partial(hv)}{\partial y}=0.
+\end{cases}
+$$</p>
+<p>假设基本态为静止，式中 $H_0$ 是静止状态的流体自由面高度。代入方程组，略去扰动量的二次项，可得扰动线性方程组为</p>
+<p>$$
+\begin{cases}
+\dfrac{\partial u'}{\partial t}-fv'=-g\dfrac{\partial h'}{\partial x},\\[12pt]
+\dfrac{\partial v'}{\partial t}+fu'=-g\dfrac{\partial h'}{\partial y},\\[12pt]
+\dfrac{\partial h'}{\partial t}+H_{0}\left(\dfrac{\partial u'}{\partial x}+\dfrac{\partial v'}{\partial y}\right)=0
+\end{cases}
+\tag{9.91}
+$$</p>
+<p>取 $f=f_0$，对 (9.91) 式进行消元，可得<br>（具体的消元过程请看附录）</p>
+<p>$$\frac{\partial}{\partial t}\left[\frac{\partial^{2}}{\partial t^{2}}-gH_{0}\left(\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}\right)+f_{0}^{2}\right]h'=0$$</p>
+<p>进一步设扰动与 $y$ 无关，对于 $h'$ 有</p>
+<p>$$\frac{\partial}{\partial t}\left(\frac{\partial^{2}}{\partial t^{2}}-gH_{0}\frac{\partial^{2}}{\partial x^{2}}+f_{0}^{2}\right)h'=0 \tag{9.93}$$</p>
+<p>设有波解</p>
+<p>$$h'=h_{0}\mathrm{e}^{\,\mathrm{i}(kx-\omega t)} \tag{9.94}$$</p>
+<p>代入方程 (9.93)，可得频率方程为</p>
+<p>$$\omega\left(\omega^{2}-gH_{0}k^{2}-f_{0}^{2}\right)=0 \tag{9.95}$$</p>
+<p>其解为</p>
+<p>$$
+\begin{cases}
+\omega=0,\\[6pt]
+\omega=\pm\sqrt{gH_{0}k^{2}+f_{0}^{2}} .
+\end{cases}
+$$</p>
+<p>式中 $\omega=0$ 对应的是定常解，不讨论它。于是得</p>
+<p>$$\omega=\pm\sqrt{gH_{0}k^{2}+f_{0}^{2}} \tag{9.96}$$</p>
+<p>这样由重力和科里奥利力共同作用下产生的重力惯性外波的相速和群速分别为</p>
+<p>$$
+\begin{cases}
+c=\dfrac{\omega}{k}=\pm\left(gH_{0}+\dfrac{f_{0}^{2}}{k^{2}}\right)^{\frac{1}{2}},\\[16pt]
+c_{g}=\dfrac{\partial\omega}{\partial k}=\pm\dfrac{gH_{0}}{\left(gH_{0}+\dfrac{f_{0}^{2}}{k^{2}}\right)^{\frac{1}{2}}} .
+\end{cases}
+\tag{9.97}
+$$</p>
+<p>重力惯性外波相速公式中含有两项，<strong>第一项反映重力作用，第二项反映地球旋转作用</strong>。若不考虑旋转作用，即取 $f_0=0$，则 $c=\pm\sqrt{gH_0}$，这是纯重力外波相速，相速与波数无关。考虑地球旋转作用后，重力外波性质上发生了变化，其特征频率大于 $f_0$，相速与波数有关，成为频散波了。</p>
+<p>当 $k\to0$ 时，这时无扰动压力梯度，由 (9.96) 式可知 $\omega=f_0$，流体将以 $f_0$ 为频率作惯性振荡。当 $k$ 充分大，即波长 $L$ 充分小时，相速公式中可略去含 $f_0$ 的项，相速与重力外波相速相同，这符合尺度分析中所得结论，即小尺度运动中科里奥利力不重要，可略去。</p>
+<p>最后我们指出，重力惯性外波方程 (9.93) 与兰姆波方程 (9.58) 的形式完全一样，因此，重力惯性外波与兰姆波在动力学上是同源的。</p>
+<h2 id="重力内波与重力惯性内波"><a href="#重力内波与重力惯性内波" class="headerlink" title="重力内波与重力惯性内波"></a>重力内波与重力惯性内波</h2><p>发生在稳定层结的层结大气中；</p>
+<h3 id="浮力振荡"><a href="#浮力振荡" class="headerlink" title="浮力振荡"></a>浮力振荡</h3><p><strong>浮力振荡</strong>：在稳定层结中，当气团受到垂直扰动时，会受到与位移方向相反的净浮力作用，而在平衡位置附近发生振荡。</p>
+<h3 id="Boussinesq近似"><a href="#Boussinesq近似" class="headerlink" title="Boussinesq近似"></a>Boussinesq近似</h3><blockquote>
+<p><strong>解释 Boussinesq 近似，并说明为何它适用于大尺度运动，它对大气运动方程做了哪些简化？</strong></p>
+</blockquote>
+<p>Boussinesq 近似是在<strong>滞弹性近似</strong>基础上，针对<strong>浅层运动</strong>进一步简化得到的一种<strong>热力学近似</strong>。其核心思想是：</p>
+<ul>
+<li>在<strong>连续方程</strong>中忽略密度的个别变化，直接简化为<strong>不可压缩形式</strong>：$\nabla\cdot\vec v=0$；</li>
+<li>在<strong>运动方程</strong>中，仅在和重力相耦合的<strong>浮力项</strong>中保留密度扰动的影响，其他项中的密度均视为常数；</li>
+<li>对于<strong>密度扰动</strong> $\rho'$，只考虑<strong>热膨胀效应</strong>的贡献，忽略由<strong>气压变化</strong>引起的密度变化。</li>
+</ul>
+<p>该近似之所以适用于大尺度运动，是因为大尺度大气运动的<strong>垂直尺度 $H$ 远小于大气密度标高</strong>（约 $8\ \mathrm{km}$），属于<strong>浅层运动</strong>。在此条件下：</p>
+<ul>
+<li>空气微团的密度变化主要由<strong>热力因素（温度变化）</strong>引起，<strong>动力压缩效应可以忽略</strong>；</li>
+<li>同时垂直运动较弱，连续方程简化为不可压缩形式<strong>不会引入显著误差</strong>，却能有效<strong>滤除声波</strong>，便于数值计算和理论分析；</li>
+<li>同时<strong>保留了热力差异驱动的浮力作用</strong>，能够较好地描述大尺度环流和天气系统的演变。</li>
+</ul>
+<p>对方程组的简化主要体现在三个方面：</p>
+<ol>
+<li><strong>连续方程</strong>简化为 $\nabla\cdot\vec v=0$，<strong>消除了声波</strong>；</li>
+<li><strong>动量方程</strong>中除了浮力项 $\left(-\dfrac{\rho'}{\rho_0}g\right)$ 保留密度扰动外，其余地方的密度均取常数 $\rho_0$，使<strong>方程线性化</strong>；</li>
+<li><strong>热力学能量方程</strong>中只考虑<strong>热膨胀</strong>对密度扰动的贡献，<strong>忽略可压缩性效应</strong>。</li>
+</ol>
+<p>这些简化在保持大尺度运动主要物理本质的同时，大大降低了数学处理的复杂性。</p>
+<h3 id="纯重力内波"><a href="#纯重力内波" class="headerlink" title="纯重力内波"></a>纯重力内波</h3><p>设 $u=u'$，$w=w'$，线性化后方程组为</p>
+<p>$$
+\begin{cases}
+\dfrac{\partial u'}{\partial t}+\dfrac{\partial}{\partial x}\left(\dfrac{p'}{\rho_{0}}\right)=0,\\[12pt]
+\dfrac{\partial w'}{\partial t}+\dfrac{\partial}{\partial z}\left(\dfrac{p'}{\rho_{0}}\right)-\dfrac{\theta'}{\bar\theta}g=0,\\[12pt]
+\lambda\dfrac{\partial u'}{\partial x}+\dfrac{\partial w'}{\partial z}=0,\\[12pt]
+\dfrac{\partial}{\partial t}\left(\dfrac{\theta'}{\bar\theta}\right)+\dfrac{N^{2}}{g}w'=0 .
+\end{cases}
+\tag{9.126}
+$$</p>
+<p>其中 $\lambda$ 为示踪系数；$\lambda$ 取零表示运动是水平无辐散的；以及常值浮力振荡频率</p>
+<p>$$N^{2}=g\frac{\mathrm{d}\ln\bar\theta}{\mathrm{d}z}$$</p>
+<p>对于 $w'$ 有</p>
+<p>$$\left[\frac{\partial^{2}}{\partial t^{2}}\left(\lambda\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial z^{2}}\right)+\lambda N^{2}\frac{\partial^{2}}{\partial x^{2}}\right]w'=0 \tag{9.128}$$</p>
+<p>在无界区域中求其波动解，令</p>
+<p>$$w=W\mathrm{e}^{\,\mathrm{i}(kx+mz-\omega t)} \tag{9.129}$$</p>
+<p>代入方程后得频散关系为</p>
+<p>$$\omega^{2}\left(\lambda k^{2}+m^{2}\right)-\lambda N^{2}k^{2}=0 \tag{9.130}$$</p>
+<p>或</p>
+<p>$$\omega=\pm\frac{\lambda^{1/2}Nk}{\left(\lambda k^{2}+m^{2}\right)^{1/2}} \tag{9.131}$$</p>
+<p>由上式可见，取 $\lambda=0$，则 $\omega=0$，这表明若运动是<strong>水平无辐散</strong>的，可排除纯重力内波；取 $N=0$，则 $\omega=0$，这表明<strong>中性层结</strong>下也无重力内波。<br><strong>即水平辐合辐散与稳定层结是重力内波的条件</strong></p>
+<p>取 $\lambda=1$，设 $N&gt;0$，则对于 $\omega&gt;0$，可得纯重力内波的相速矢量和群速矢量分别为</p>
+<p>$$
+\begin{cases}
+\vec c=\dfrac{\omega}{K^{2}}\vec K=\dfrac{Nk}{\left(k^{2}+m^{2}\right)^{3/2}}\left(k\vec i+m\vec k\right),\\[14pt]
+\vec c_{g}=\dfrac{\partial\omega}{\partial k}\vec i+\dfrac{\partial\omega}{\partial m}\vec k
+=\dfrac{Nm}{\left(k^{2}+m^{2}\right)^{3/2}}\left(m\vec i-k\vec k\right).
+\end{cases}
+\tag{9.132}
+$$</p>
+<p>上式中 $\vec K$ 为二维波数矢量，$\vec K=k\vec i+m\vec k$。</p>
+<p>综上所述，纯重力内波有以下特点：</p>
+<p><strong>①</strong> 非静力平衡大气中，在稳定层结条件下才能形成纯重力内波，它既可沿水平方向传播，也可沿铅直方向传播，其水平相速为</p>
+<p>$$c_{px}=\frac{\omega}{k}=\pm\frac{N}{\left(k^{2}+m^{2}\right)^{1/2}} \tag{9.133}$$</p>
+<p><strong>②</strong> 由 (9.132) 式不难看出，相速矢量与群速矢量是<strong>相垂直</strong>的，即有</p>
+<p>$$\vec c\cdot\vec c_{g}=0 .$$</p>
+<p><strong>③</strong> 相速矢量和群速矢量<strong>水平方向分量的方向相同</strong>，而<strong>铅直方向分量的方向相反</strong>。因此，纯重力内波位相向东向下传播时，必然伴随有扰动能量向东向上传播。</p>
+<p><strong>④</strong> 如果把各扰动量形式解代入扰动方程组，可得到各扰动量之间的位相关系。不难发现，如果 $\omega&gt;0$、$k&gt;0$、$m&lt;0$（代表等位相面向东倾斜，波动既向东又向下传播），那么<strong>气压扰动、速度扰动将是同位相的</strong>，而<strong>位温扰动与气压扰动、速度扰动位相差 $\pi/2$</strong>，如图 9.11 所示。</p>
+<h3 id="惯性内波与重力惯性内波"><a href="#惯性内波与重力惯性内波" class="headerlink" title="惯性内波与重力惯性内波"></a>惯性内波与重力惯性内波</h3><p>现在讨论地球旋转对重力内波的影响，取 $f=f_0$，并取Boussinesq近似，则三维扰动方程组为</p>
+<p>$$
+\begin{cases}
+\dfrac{\partial u'}{\partial t}-f_{0}v'+\dfrac{\partial}{\partial x}\left(\dfrac{p'}{\rho_{0}}\right)=0,\\[12pt]
+\dfrac{\partial v'}{\partial t}+f_{0}u'+\dfrac{\partial}{\partial y}\left(\dfrac{p'}{\rho_{0}}\right)=0,\\[12pt]
+\lambda\dfrac{\partial w'}{\partial t}+\dfrac{\partial}{\partial z}\left(\dfrac{p'}{\rho_{0}}\right)-\dfrac{\theta'}{\bar\theta}g=0,\\[12pt]
+\dfrac{\partial u'}{\partial x}+\dfrac{\partial v'}{\partial y}+\dfrac{\partial w'}{\partial z}=0,\\[12pt]
+\dfrac{\partial}{\partial t}\left(\dfrac{\theta'}{\bar\theta}\right)+\dfrac{N^{2}}{g}w'=0 .
+\end{cases}
+\tag{9.134}
+$$</p>
+<p>式中 $\lambda=0$，则表示扰动是<strong>静力平衡</strong>的。</p>
+<p>对于 $w'$ 有（不知道为什么，我消元没有定常解那一项）</p>
+<p>$$\left[\left(\lambda\frac{\partial^{2}}{\partial t^{2}}+N^{2}\right)\nabla^{2}+\left(\frac{\partial^{2}}{\partial t^{2}}+f_{0}^{2}\right)\frac{\partial^{2}}{\partial z^{2}}\right]\frac{\partial w'}{\partial t}=0 \tag{9.136}$$</p>
+<p>令</p>
+<p>$$w'=W\mathrm{e}^{\,\mathrm{i}(kx+ly+mz-\omega t)} \tag{9.137}$$</p>
+<p>代入方程 (9.136) 后可得频率方程</p>
+<p>$$\omega^{2}\left\{N^{2}\left(k^{2}+l^{2}\right)+f_{0}^{2}m^{2}-\left[\lambda\left(k^{2}+l^{2}\right)+m^{2}\right]\omega^{2}\right\}=0 \tag{9.138}$$</p>
+<p>式中 $\omega=0$ 对应的是定常解，对于波动解有</p>
+<p>$$\omega^{2}=\frac{N^{2}\left(k^{2}+l^{2}\right)+f_{0}^{2}m^{2}}{\lambda\left(k^{2}+l^{2}\right)+m^{2}} \tag{9.139}$$</p>
+<p>显然，(9.139) 式中，若取 $f_0=0$，可得到<strong>纯重力内波</strong>频率。当大气为<strong>中性层结</strong>时，$N^{2}=0$，方程组中不含重力内波解，所得到的波动称<strong>惯性内波</strong>，其频率为</p>
+<p>$$\omega=\pm\frac{f_{0}m}{\left[\lambda\left(k^{2}+l^{2}\right)+m^{2}\right]^{1/2}} \tag{9.140}$$</p>
+<h4 id="惯性内波"><a href="#惯性内波" class="headerlink" title="惯性内波"></a>惯性内波</h4><p>惯性内波是在<strong>科里奥利力</strong>作用下形成的波动。当扰动满足<strong>静力平衡</strong>（$\lambda=0$），或<strong>水平方向无扰动气压梯度</strong>时，即</p>
+<p>$$\frac{\partial p'}{\partial x}=\frac{\partial p'}{\partial y}=0\qquad(\text{即 }k\to0,\ l\to0),$$</p>
+<p>则 $\omega=\pm f_{0}$，此两种情形下大气作<strong>惯性振荡</strong>，纯惯性波。</p>
+<p>取 $\lambda=1$，对于 $\omega&gt;0$，纯惯性内波的相速矢量和群速矢量分别为</p>
+<p>$$
+\begin{cases}
+\vec c=\dfrac{\omega}{K^{2}}\vec K=\dfrac{f_{0}m}{\left(k^{2}+l^{2}+m^{2}\right)^{3/2}}\left(k\vec i+l\vec j+m\vec k\right),\\[14pt]
+\vec c_{g}=\dfrac{\partial\omega}{\partial k}\vec i+\dfrac{\partial\omega}{\partial l}\vec j+\dfrac{\partial\omega}{\partial m}\vec k
+=\dfrac{f_{0}m}{\left(k^{2}+l^{2}+m^{2}\right)^{3/2}}\left[-k\vec i-l\vec j+\dfrac{k^{2}+l^{2}}{m}\vec k\right].
+\end{cases}
+\tag{9.141}
+$$</p>
+<p>(9.141) 式中 $\vec K$ 为三维波数矢量，$\vec K=k\vec i+l\vec j+m\vec k$。</p>
+<p>综上讨论，<strong>惯性内波</strong>有以下特点：</p>
+<p><strong>①</strong> 非静力平衡大气中，只有在<strong>中性层结</strong>条件下，才可能形成惯性内波。其沿 $x$ 方向传播的速度为</p>
+<p>$$c_{px}=\frac{\omega}{k}=\pm\frac{f_{0}m}{k\left(k^{2}+l^{2}+m^{2}\right)^{1/2}} \tag{9.142}$$</p>
+<p><strong>②</strong> 容易证明，惯性内波的相速矢量与群速矢量也是<strong>相垂直</strong>的，即有 $\vec c\cdot\vec c_{g}=0$。</p>
+<p><strong>③</strong> 相速矢量与群速矢量的<strong>铅直分量方向相同，水平分量相反</strong>。</p>
+<h4 id="重力惯性内波"><a href="#重力惯性内波" class="headerlink" title="重力惯性内波"></a>重力惯性内波</h4><p>既考虑地球旋转的影响，且大气层结是<strong>稳定的</strong>，所得到的波动是<strong>重力惯性内波</strong>，其频率为</p>
+<p>$$\omega=\pm\frac{\left[N^{2}\left(k^{2}+l^{2}\right)+f_{0}^{2}m^{2}\right]^{1/2}}{\left(k^{2}+l^{2}+m^{2}\right)^{1/2}} \tag{9.143}$$</p>
+<p>若令</p>
+<p>$$G_{1}=\frac{\left[N^{2}\left(k^{2}+l^{2}\right)+f_{0}^{2}m^{2}\right]^{1/2}}{\left(k^{2}+l^{2}+m^{2}\right)^{3/2}}&gt;0,$$</p>
+<p>$$G_{2}=\frac{\left(N^{2}-f_{0}^{2}\right)m}{\left(k^{2}+l^{2}+m^{2}\right)^{3/2}\left[N^{2}\left(k^{2}+l^{2}\right)+f_{0}^{2}m^{2}\right]^{1/2}},$$</p>
+<p>对于 $\omega&gt;0$，可求得相速矢量和群速矢量分别为</p>
+<p>$$
+\begin{cases}
+\vec c=\dfrac{\omega}{K^{2}}\vec K=G_{1}\left(k\vec i+l\vec j+m\vec k\right),\\[14pt]
+\vec c_{g}=\dfrac{\partial\omega}{\partial k}\vec i+\dfrac{\partial\omega}{\partial l}\vec j+\dfrac{\partial\omega}{\partial m}\vec k
+=G_{2}m\left(k\vec i+l\vec j-\dfrac{k^{2}+l^{2}}{m}\vec k\right).
+\end{cases}
+\tag{9.144}
+$$</p>
+<p>由此可看出：</p>
+<p><strong>①</strong> $\vec c\cdot\vec c_{g}=0$，即重力惯性内波的相速矢量和群速矢量也是<strong>垂直</strong>的。</p>
+<p><strong>②</strong> $N^{2}-f_{0}^{2}&gt;0$（即 $G_{2}&gt;0$）时，相速矢量和群速矢量的<strong>水平分量方向相同，铅直分量方向相反</strong>，这时重力惯性内波主要表现为<strong>重力内波</strong>性质；当 $N^{2}-f_{0}^{2}&lt;0$（即 $G_{2}&lt;0$）时，相速矢量和群速矢量的<strong>水平分量方向相反，铅直分量方向相同</strong>，这时重力惯性内波主要表现为<strong>惯性内波</strong>性质。</p>
+<p><strong>③</strong> 和重力惯性外波一样，这种波动<strong>一定是非地转的</strong>，水平辐合辐散即<strong>位势运动是重要的</strong>。</p>
+<hr>
+<h1 id="正压水平无辐散-Rossby-波"><a href="#正压水平无辐散-Rossby-波" class="headerlink" title="正压水平无辐散 Rossby 波"></a>正压水平无辐散 Rossby 波</h1><p>显然，当有南北运动时，因地转参数随纬度变化会引起相对涡度的变化，这就是 <strong>β 效应</strong>。<strong>β 效应是罗斯贝波得以传播的物理机制</strong>。</p>
+<p>正压水平无辐散涡度方程<br>$$\frac{d\zeta}{dt}=-\beta v \tag{9.145}$$</p>
+<p>以上定性结论完全可由理论分析得到。设基本气流为均匀西风，即令</p>
+<p>$$
+\begin{cases}
+u=\bar u+u',\\[4pt]
+v=v'.
+\end{cases}
+\tag{9.146}
+$$</p>
+<p>将正压水平无辐散涡度方程 (9.145) 线性化，得</p>
+<p>$$\frac{\partial\zeta'}{\partial t}+\bar u\frac{\partial\zeta'}{\partial x}+\beta v'=0 \tag{9.147}$$</p>
+<p>其中</p>
+<p>$$\zeta'=\frac{\partial v'}{\partial x}-\frac{\partial u'}{\partial y}.$$</p>
+<p>因扰动速度场是<strong>水平无辐散</strong>的，故可引进扰动流函数 $\Psi'$，于是有</p>
+<p>$$
+\begin{cases}
+u'=-\dfrac{\partial\Psi'}{\partial y},\\[10pt]
+v'=\dfrac{\partial\Psi'}{\partial x},\\[10pt]
+\zeta'=\nabla^{2}\Psi'.
+\end{cases}
+\tag{9.148}
+$$</p>
+<p>代入方程 (9.147) 后，便有</p>
+<p>$$\left(\frac{\partial}{\partial t}+\bar u\frac{\partial}{\partial x}\right)\nabla^{2}\Psi'+\beta\frac{\partial\Psi'}{\partial x}=0 \tag{9.149}$$</p>
+<p>取 β 平面近似（令 $\beta=\text{常数}$），设有波解为</p>
+<p>$$\Psi'=\Psi\mathrm{e}^{\,\mathrm{i}(kx+ly-\omega t)} \tag{9.150}$$</p>
+<p>代入方程 (9.149) 中，可得频率方程为</p>
+<p>$$-\left(k\bar u-\omega\right)\left(k^{2}+l^{2}\right)+\beta k=0 \tag{9.151}$$</p>
+<p>即有</p>
+<p>$$\omega=\bar uk-\frac{\beta k}{k^{2}+l^{2}} \tag{9.152}$$</p>
+<p>我们最感兴趣的是罗斯贝波沿纬向传播的速度 $c_{px}$，由 (9.152) 可得</p>
+<p>$$c_{px}=\frac{\omega}{k}=\bar u-\frac{\beta}{k^{2}+l^{2}} \tag{9.153}$$</p>
+<p>由 (9.153) 式可知，罗斯贝波<strong>相对基本气流是向西传播的</strong>。纬向群速为</p>
+<p>$$c_{gx}=\bar u+\frac{\beta\left(k^{2}-l^{2}\right)}{\left(k^{2}+l^{2}\right)^{2}} \tag{9.154}$$</p>
+<p>讨论：</p>
+<p><strong>①</strong> 正压大气中罗斯贝波是由<strong>绝对涡度守恒</strong>控制的一种<strong>大尺度涡旋性波动</strong>，β 效应是它得以传播的最主要机制。</p>
+<p><strong>②</strong> 罗斯贝波<strong>相对于基本气流向西传播</strong>。对于典型的中纬度天气尺度波动，若取波长 $L_x=6000\ \mathrm{km}$、波宽 $L_y=3000\ \mathrm{km}$，则罗斯贝波相对于纬向基本气流的传播速度为 $c_{px}-\bar u\approx-6\ \mathrm{m/s}$，所以罗斯贝波传播速度很缓慢，是<strong>大尺度涡旋性慢波</strong>。</p>
+<p><strong>③</strong> 罗斯贝波相速与波数有关，是<strong>频散波</strong>。罗斯贝波对能量的频散，对于天气尺度系统的演变是十分重要的。</p>
+<p><strong>④</strong> 罗斯贝波是大尺度波动，具有<strong>准地转性</strong>，这是与重力惯性波的重要区别之一。</p>
+<hr>
+<h1 id="准地转-Rossby-波"><a href="#准地转-Rossby-波" class="headerlink" title="准地转 Rossby 波"></a>准地转 Rossby 波</h1><p>这里讨论<strong>无地形、正压、二维准地转 Rossby 波</strong>。先取静止基本状态，这样可以清楚看出自由面变化和水平辐散的作用；最后再推广到均匀西风基本气流。</p>
+<blockquote>
+<p>推导路线：浅水方程组 → 线性化 → 涡度方程与连续方程联立 → 线性位涡方程 → 引入准地转流函数 → 代入简谐波解 → 频散关系及相速、群速。</p>
+</blockquote>
+<h2 id="频散关系"><a href="#频散关系" class="headerlink" title="频散关系"></a>频散关系</h2><h3 id="浅水连续方程"><a href="#浅水连续方程" class="headerlink" title="浅水连续方程"></a>浅水连续方程</h3><p>均质不可压缩流体的三维连续方程为</p>
+<p>$$
+\frac{\partial u}{\partial x}
++\frac{\partial v}{\partial y}
++\frac{\partial w}{\partial z}=0.
+$$</p>
+<p>设底面高度为 $h_B(x,y)$，自由面高度为 $h(x,y,t)$，流体厚度为</p>
+<p>$$
+H=h-h_B.
+$$</p>
+<p>浅水理论中，水平速度 $u,v$ 不随高度变化。将连续方程从 $z=h_B$ 积分到 $z=h$，得到</p>
+<p>$$
+H\left(\frac{\partial u}{\partial x}
++\frac{\partial v}{\partial y}\right)
++w(h)-w(h_B)=0.
+$$</p>
+<p>自由面是物质面，因此自由面上的垂直速度满足</p>
+<p>$$
+w(h)=\frac{\partial h}{\partial t}
++u\frac{\partial h}{\partial x}
++v\frac{\partial h}{\partial y}.
+$$</p>
+<p>固定底面不可穿透，因此底面上的垂直速度满足</p>
+<p>$$
+w(h_B)=u\frac{\partial h_B}{\partial x}
++v\frac{\partial h_B}{\partial y}.
+$$</p>
+<p>代入积分后的连续方程：</p>
+<p>$$
+H\left(\frac{\partial u}{\partial x}
++\frac{\partial v}{\partial y}\right)
++\frac{\partial h}{\partial t}
++u\left(\frac{\partial h}{\partial x}
+-\frac{\partial h_B}{\partial x}\right)
++v\left(\frac{\partial h}{\partial y}
+-\frac{\partial h_B}{\partial y}\right)=0.
+$$</p>
+<p>由于 $h_B$ 不随时间变化，而 $H=h-h_B$，所以</p>
+<p>$$
+\frac{\partial h}{\partial t}=\frac{\partial H}{\partial t}.
+$$</p>
+<p>于是</p>
+<p>$$
+\frac{\partial H}{\partial t}
++u\frac{\partial H}{\partial x}
++v\frac{\partial H}{\partial y}
++H\left(\frac{\partial u}{\partial x}
++\frac{\partial v}{\partial y}\right)=0,
+$$</p>
+<p>即</p>
+<p>$$
+\boxed{
+\frac{\partial H}{\partial t}
++\frac{\partial(uH)}{\partial x}
++\frac{\partial(vH)}{\partial y}=0
+}.
+$$</p>
+<p>这就是含地形的浅水连续方程。其物理意义是：<strong>流体柱厚度的个别变化，只能由水平辐合、辐散造成。</strong></p>
+<p>无地形时，可取 $h_B=0$，此时 $H=h$，连续方程化为</p>
+<p>$$
+\boxed{
+\frac{\partial h}{\partial t}
++\frac{\partial(uh)}{\partial x}
++\frac{\partial(vh)}{\partial y}=0
+}.
+$$</p>
+<h3 id="无地形浅水方程组及其线性化"><a href="#无地形浅水方程组及其线性化" class="headerlink" title="无地形浅水方程组及其线性化"></a>无地形浅水方程组及其线性化</h3><p>无地形、均质不可压缩流体的浅水方程组为</p>
+<p>$$
+\begin{cases}
+\dfrac{\partial u}{\partial t}
++u\dfrac{\partial u}{\partial x}
++v\dfrac{\partial u}{\partial y}-fv
+=-g\dfrac{\partial h}{\partial x},\\[8pt]
+\dfrac{\partial v}{\partial t}
++u\dfrac{\partial v}{\partial x}
++v\dfrac{\partial v}{\partial y}+fu
+=-g\dfrac{\partial h}{\partial y},\\[8pt]
+\dfrac{\partial h}{\partial t}
++\dfrac{\partial(uh)}{\partial x}
++\dfrac{\partial(vh)}{\partial y}=0.
+\end{cases}
+$$</p>
+<p>取静止基本状态：</p>
+<p>$$
+u=u',\qquad v=v',\qquad h=H_0+\eta,
+$$</p>
+<p>其中 $H_0$ 为常数，$|\eta|\ll H_0$。略去两个扰动量相乘形成的二阶小量，得到</p>
+<p>$$
+\begin{cases}
+\dfrac{\partial u'}{\partial t}-fv'
+=-g\dfrac{\partial\eta}{\partial x},\\[8pt]
+\dfrac{\partial v'}{\partial t}+fu'
+=-g\dfrac{\partial\eta}{\partial y},\\[8pt]
+\dfrac{\partial\eta}{\partial t}
++H_0\left(\dfrac{\partial u'}{\partial x}
++\dfrac{\partial v'}{\partial y}\right)=0.
+\end{cases}
+$$</p>
+<p>这里先线性化，再引入准地转近似，层次比较清楚。也可以先建立非线性准地转位涡方程，再对其线性化，两条路线等价。</p>
+<h3 id="位涡方程"><a href="#位涡方程" class="headerlink" title="位涡方程"></a>位涡方程</h3><p>根据运动方程得到涡度方程；利用散度项与连续方程联立，得到线性化的位涡方程。</p>
+<p>$$
+\boxed{
+\frac{\partial\zeta'}{\partial t}
+-\frac{f_0}{H_0}\frac{\partial\eta}{\partial t}
++\beta v'=0
+}.
+$$</p>
+<h3 id="引入准地转流函数"><a href="#引入准地转流函数" class="headerlink" title="引入准地转流函数"></a>引入准地转流函数</h3><p>在准地转近似下，地转关系为</p>
+<p>$$
+-f_0v'=-g\frac{\partial\eta}{\partial x},
+\qquad
+f_0u'=-g\frac{\partial\eta}{\partial y}.
+$$</p>
+<p>定义准地转流函数</p>
+<p>$$
+\boxed{\psi=\frac{g\eta}{f_0}},
+$$</p>
+<p>则</p>
+<p>$$
+u'=-\frac{\partial\psi}{\partial y},
+\qquad
+v'=\frac{\partial\psi}{\partial x},
+$$</p>
+<p>从而</p>
+<p>$$
+\zeta'=\nabla^2\psi,
+\qquad
+\eta=\frac{f_0}{g}\psi.
+$$</p>
+<p>代入线性位涡方程：</p>
+<p>$$
+\nabla^2\frac{\partial\psi}{\partial t}
+-\frac{f_0^2}{gH_0}\frac{\partial\psi}{\partial t}
++\beta\frac{\partial\psi}{\partial x}=0.
+$$</p>
+<p>定义变形半径的倒数平方</p>
+<p>$$
+L_0^{-2}=\frac{f_0^2}{gH_0},
+$$</p>
+<p>得到</p>
+<p>$$
+\boxed{
+\left(\nabla^2-L_0^{-2}\right)
+\frac{\partial\psi}{\partial t}
++\beta\frac{\partial\psi}{\partial x}=0
+}.
+$$</p>
+<p>也可以写成</p>
+<p>$$
+\boxed{
+\frac{\partial}{\partial t}
+\left(\nabla^2\psi-L_0^{-2}\psi\right)
++\beta\frac{\partial\psi}{\partial x}=0
+}.
+$$</p>
+<p>其中 $\nabla^2\psi-L_0^{-2}\psi$ 就是扰动准地转位涡的流函数形式。</p>
+<blockquote>
+<p>准地转近似不等于直接令 $D'=0$。地转风部分近似无辐散，但连续方程中仍保留小散度造成的自由面变化；正是这一项产生了 $-L_0^{-2}\dfrac{\partial\psi}{\partial t}$。</p>
+</blockquote>
+<h3 id="求二维频散关系"><a href="#求二维频散关系" class="headerlink" title="求二维频散关系"></a>求二维频散关系</h3><p>设简谐波解</p>
+<p>$$
+\psi=\Psi e^{i(kx+ly-\omega t)}.
+$$</p>
+<p>代入准地转位涡方程：</p>
+<p>$$
+i\left[
+(k^2+l^2+L_0^{-2})\omega+\beta k
+\right]\Psi=0.
+$$</p>
+<p>非零波解要求</p>
+<p>$$
+\boxed{
+\omega=-\frac{\beta k}{k^2+l^2+L_0^{-2}}
+}.
+$$</p>
+<p>这就是无基本气流时，二维正压准地转 Rossby 波的频散关系。</p>
+<h2 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h2><h3 id="关于上下游效应"><a href="#关于上下游效应" class="headerlink" title="关于上下游效应"></a>关于上下游效应</h3><p>$x$ 方向相速度为</p>
+<p>$$
+\boxed{
+c_{px}=\frac{\omega}{k}
+=-\frac{\beta}{k^2+l^2+L_0^{-2}}
+}.
+$$</p>
+<p>所以 $c_{px}$ 始终为负，即位相沿负 $x$ 方向传播。</p>
+<p>群速度的两个分量为</p>
+<p>$$
+\boxed{
+c_{gx}=\frac{\partial\omega}{\partial k}
+=\frac{\beta(k^2-l^2-L_0^{-2})}
+{(k^2+l^2+L_0^{-2})^2}
+},
+$$</p>
+<p>$$
+\boxed{
+c_{gy}=\frac{\partial\omega}{\partial l}
+=\frac{2\beta kl}{(k^2+l^2+L_0^{-2})^2}
+}.
+$$</p>
+<p>因此，群速度的方向取决于波数，不能笼统地说群速度始终向东或始终向西。</p>
+<p>进一步可得</p>
+<p>$$
+\frac{c_{gx}}{c_{px}}
+=\frac{l^2+L_0^{-2}-k^2}{k^2+l^2+L_0^{-2}}.
+$$</p>
+<p>若令</p>
+<p>$$
+X=\frac{k}{\sqrt{l^2+L_0^{-2}}},
+$$<br>$$Y=\frac{c_{gx}}{c_{px}}$$</p>
+<p>则（为什么要这样”令“，因为这样画出来的图明了）</p>
+<p>$$
+\boxed{
+\frac{c_{gx}}{c_{px}}=\frac{1-X^2}{1+X^2}
+}.
+$$</p>
+<p>如图<br>（如何理解这张图？实际上把x方向波数k看作自变量，考虑相速度与群速度之比随k的变化。后面还是这样的思路，分别考虑相速度与群速度的极值。）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">left=-0.6</span><br><span class="line">right=6.7</span><br><span class="line">bottom=-1.15</span><br><span class="line">top=1.2</span><br><span class="line">width=470</span><br><span class="line">height=300</span><br><span class="line">xAxisLabel=X</span><br><span class="line">yAxisLabel=Y</span><br><span class="line">---</span><br><span class="line">y=(1-x^&#123;2&#125;)/(1+x^&#123;2&#125;) | x&gt;=0</span><br></pre></td></tr></table></figure>
+
+<p>由于 $c_{px}&lt;0$：</p>
+<ul>
+<li>$0\leq X&lt;1$ 时，比值为正，$c_{gx}&lt;0$，相速与群速同向，都向上游传播</li>
+<li>$X=1$ 时，$c_{gx}=0$；</li>
+<li>$X&gt;1$ 时，比值为负，$c_{gx}&gt;0$，相速与群速反向。</li>
+</ul>
+<p>分析相速度有极小值（实际上是负速度的极大值）</p>
+<p>$$
+min\{c_{px}\}= -\frac{\beta}{l^2+L_{0}^{-2}}
+$$</p>
+<p>分析群速度极值<br>$$
+\frac{\partial c_{gx}}{\partial k}=\frac{2\beta k}{k^2+l^2+L_0^{-2}} \cdot(3l^2+3L_{0}^{-2}-k^2)
+$$</p>
+<p>则群速度在$k^2=3(l^2+L_{0}^{-2})$时取最大值$\frac{1}{8}\cdot\frac{\beta}{l^2+L_{0}^{-2}}$，并且在$k=0$处有最小值$-\frac{\beta}{l^2+L_{0}^{-2}}$（最大值左侧单调递增，右侧单调递减到0+）</p>
+<p>综合分析相速度群速度极值，以及观察图可以发现可以发现</p>
+<ul>
+<li>$0\leq X&lt;1$ 时，群速度无法超过相速度（与Y轴交点为1），即不会存在下游效应；</li>
+<li>$X&gt;1$ 时，群速度可以向下游传播，而相速度无法向下游传播（恒为负），因此可以有上游效应。</li>
+</ul>
+<h3 id="与正压水平无辐散-Rossby-波的关系"><a href="#与正压水平无辐散-Rossby-波的关系" class="headerlink" title="与正压水平无辐散 Rossby 波的关系"></a>与正压水平无辐散 Rossby 波的关系</h3><p>若进一步取水平无辐散近似，相当于令</p>
+<p>$$
+L_0^{-2}\rightarrow0,
+$$</p>
+<p>准地转频散关系退化为</p>
+<p>$$
+\omega=-\frac{\beta k}{k^2+l^2}.
+$$</p>
+<p>相应地，</p>
+<p>$$
+c_{px}=-\frac{\beta}{k^2+l^2},
+\qquad
+c_{gx}=\frac{\beta(k^2-l^2)}{(k^2+l^2)^2}.
+$$</p>
+<p>这与前面“正压水平无辐散 Rossby 波”的结果一致。两种模型的差别在于：<strong>准地转模型保留了自由面变化和涡管伸缩作用，水平无辐散模型则把这部分作用略去。</strong></p>
+<h3 id="推广到均匀西风基本气流"><a href="#推广到均匀西风基本气流" class="headerlink" title="推广到均匀西风基本气流"></a>推广到均匀西风基本气流</h3><p>若考虑均匀西风基本气流，基本自由面不能仍然随意取为严格水平，而应满足基本地转平衡。设</p>
+<p>$$
+u=\bar u+u',\qquad v=v',\qquad h=\bar h(y)+h',
+$$</p>
+<p>其中 $\bar u$ 为常数，且</p>
+<p>$$
+\bar u=-\frac{g}{f_0}\frac{d\bar h}{dy}=\text{常数}.
+$$</p>
+<p>记</p>
+<p>$$
+\frac{\partial}{\partial t}
++\bar u\frac{\partial}{\partial x}
+\equiv \frac{D}{Dt},
+\qquad
+\psi=\frac{gh'}{f_0}.
+$$</p>
+<p>在系数中用特征厚度 $H_0$ 近似 $\bar h$，经过同样的线性化和消元，可得</p>
+<p>$$
+\boxed{
+\frac{D}{Dt}
+\left(\nabla^2\psi-L_0^{-2}\psi\right)
++\left(\beta+L_0^{-2}\bar u\right)
+\frac{\partial\psi}{\partial x}=0
+}.
+$$</p>
+<p>代入</p>
+<p>$$
+\psi=\Psi e^{i(kx+ly-\omega t)}
+$$</p>
+<p>得到</p>
+<p>$$
+\boxed{
+\omega=k\bar u-
+\frac{k\left(\beta+L_0^{-2}\bar u\right)}
+{k^2+l^2+L_0^{-2}}
+}.
+$$</p>
+<p>当 $\bar u=0$ 时，立即退化为前面静止基本状态的结果。这里的 $L_0^{-2}\bar u$ 来自基本自由面倾斜所对应的背景位涡梯度，不能在拥有均匀西风基本气流时随意漏掉。</p>
+<hr>
+<h1 id="地形Rossby波"><a href="#地形Rossby波" class="headerlink" title="地形Rossby波"></a>地形Rossby波</h1><p>实际上，地形作用可以起到类似于β效应的作用，引起Rossby波。<br>比如这道例题。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>考虑均质、不可压缩、具有自由面的旋转流体。自由面高度为 $h(x,y,t)$，固定地形高度为 $h_B(x,y)$，流体厚度为</p>
+<p>$$
+H=h-h_B.
+$$</p>
+<p>假设流体满足静力平衡，水平速度不随高度变化，不计摩擦。</p>
+<p><strong>（1）建立方程。</strong> 从水平运动方程和不可压缩连续方程出发，证明</p>
+<p>$$
+\begin{cases}
+\dfrac{\partial u}{\partial t}
++u\dfrac{\partial u}{\partial x}
++v\dfrac{\partial u}{\partial y}
+-fv
+=-g\dfrac{\partial h}{\partial x},\\[6pt]
+\dfrac{\partial v}{\partial t}
++u\dfrac{\partial v}{\partial x}
++v\dfrac{\partial v}{\partial y}
++fu
+=-g\dfrac{\partial h}{\partial y},\\[6pt]
+\dfrac{\partial H}{\partial t}
++\dfrac{\partial(uH)}{\partial x}
++\dfrac{\partial(vH)}{\partial y}=0.
+\end{cases}
+$$</p>
+<p><strong>（2）方程线性化。</strong> 设基本状态为静止状态，令</p>
+<p>$$
+u=u',\qquad v=v',\qquad h=H_0+\eta(x,y,t),
+$$</p>
+<p>其中 $H_0$ 为常数，$H_0\gg |\eta|$。将地形和扰动均视为小量，写出保留一阶小量的扰动方程组。</p>
+<p><strong>（3）推导准地转位涡方程。</strong> 进一步假设：</p>
+<ol>
+<li>不考虑行星 $\beta$ 效应，即在最后结果中令 $\beta=0$；</li>
+<li>地形高度满足 $h_B\ll H_0$；</li>
+<li>$\dfrac{\partial h_B}{\partial x}=0$，$\dfrac{\partial h_B}{\partial y}$ 为常值；</li>
+<li>取准地转近似，引入流函数 $\psi=\dfrac{g\eta}{f_0}$。</li>
+</ol>
+<p>证明地形罗斯贝波满足</p>
+<p>$$
+\left(\nabla^2-L_0^{-2}\right)
+\frac{\partial\psi}{\partial t}
++\beta_T\frac{\partial\psi}{\partial x}=0,
+$$</p>
+<p>其中</p>
+<p>$$
+L_0^{-2}=\frac{f_0^2}{gH_0},
+\qquad
+\beta_T=\frac{f_0}{H_0}\frac{\partial h_B}{\partial y}.
+$$</p>
+<p><strong>（4）求频散关系并讨论传播。</strong> 设</p>
+<p>$$
+\psi=\Psi e^{i(kx+ly-\omega t)},
+$$</p>
+<p>求 $\omega$、$x$ 方向相速度 $c_{px}$ 和群速度 $c_{gx}$，说明 $\beta_T$ 为什么起着 $\beta$ 因子的作用，并讨论地形坡度变号对传播的影响。</p>
+<h2 id="参考解答"><a href="#参考解答" class="headerlink" title="参考解答"></a>参考解答</h2><p>在这里我先简要说一下思路。答案很长。<br>思路是：对方程组线性化，前两个方程写为涡度方程形式，并将连续方程的散度项写进涡度方程里；设准地转流函数，代入，得到仅关于准地转流函数的方程；设扰动，进而得到频散关系。</p>
+<h3 id="建立含地形的浅水方程组"><a href="#建立含地形的浅水方程组" class="headerlink" title="建立含地形的浅水方程组"></a>建立含地形的浅水方程组</h3><p>由于流体均质且满足静力平衡，自由面上的气压取为常值 $p_a$，流体内部气压为</p>
+<p>$$
+p=p_a+\rho g(h-z).
+$$</p>
+<p>因此，同一高度上的水平气压梯度为</p>
+<p>$$
+\frac{1}{\rho}\frac{\partial p}{\partial x}
+=g\frac{\partial h}{\partial x},
+\qquad
+\frac{1}{\rho}\frac{\partial p}{\partial y}
+=g\frac{\partial h}{\partial y}.
+$$</p>
+<p>代入旋转流体的水平运动方程，即得</p>
+<p>$$
+\frac{\partial u}{\partial t}
++u\frac{\partial u}{\partial x}
++v\frac{\partial u}{\partial y}-fv
+=-g\frac{\partial h}{\partial x},
+$$</p>
+<p>$$
+\frac{\partial v}{\partial t}
++u\frac{\partial v}{\partial x}
++v\frac{\partial v}{\partial y}+fu
+=-g\frac{\partial h}{\partial y}.
+$$</p>
+<p>不可压缩连续方程为</p>
+<p>$$
+\frac{\partial u}{\partial x}
++\frac{\partial v}{\partial y}
++\frac{\partial w}{\partial z}=0.
+$$</p>
+<p>将其从底面 $z=h_B$ 积分到自由面 $z=h$。自由面和固定底面的运动学边界条件分别为</p>
+<p>$$
+w(h)=\frac{\partial h}{\partial t}
++u\frac{\partial h}{\partial x}
++v\frac{\partial h}{\partial y},
+$$</p>
+<p>$$
+w(h_B)=u\frac{\partial h_B}{\partial x}
++v\frac{\partial h_B}{\partial y}.
+$$</p>
+<p>利用水平速度不随高度变化，积分连续方程并代入上述边界条件，可得</p>
+<p>$$
+\frac{\partial H}{\partial t}
++\frac{\partial(uH)}{\partial x}
++\frac{\partial(vH)}{\partial y}=0,
+\qquad H=h-h_B.
+$$</p>
+<p>至此，含地形的浅水方程组建立完毕。</p>
+<h3 id="线性化"><a href="#线性化" class="headerlink" title="线性化"></a>线性化</h3><p>将</p>
+<p>$$
+u=u',\qquad v=v',\qquad h=H_0+\eta
+$$</p>
+<p>代入水平运动方程。由于 $u'$、$v'$、$\eta$ 均为一阶小量，两个扰动量的乘积为二阶小量，故略去平流项，得到</p>
+<p>$$
+\frac{\partial u'}{\partial t}-fv'
+=-g\frac{\partial\eta}{\partial x},
+$$</p>
+<p>$$
+\frac{\partial v'}{\partial t}+fu'
+=-g\frac{\partial\eta}{\partial y}.
+$$</p>
+<p>连续方程中，</p>
+<p>$$
+H=H_0+\eta-h_B.
+$$</p>
+<p>保留一阶小量，有</p>
+<p>$$
+\frac{\partial H}{\partial t}
+=\frac{\partial\eta}{\partial t},
+$$</p>
+<p>$$
+\frac{\partial(uH)}{\partial x}
++\frac{\partial(vH)}{\partial y}
+\simeq
+H_0\left(\frac{\partial u'}{\partial x}
++\frac{\partial v'}{\partial y}\right)
+-u'\frac{\partial h_B}{\partial x}
+-v'\frac{\partial h_B}{\partial y}.
+$$</p>
+<p>因此，线性化连续方程为</p>
+<p>$$
+\frac{\partial\eta}{\partial t}
++H_0\left(\frac{\partial u'}{\partial x}
++\frac{\partial v'}{\partial y}\right)
+-u'\frac{\partial h_B}{\partial x}
+-v'\frac{\partial h_B}{\partial y}=0.
+$$</p>
+<p>综上，扰动方程组为</p>
+<p>$$
+\boxed{
+\begin{cases}
+\dfrac{\partial u'}{\partial t}-fv'
++g\dfrac{\partial\eta}{\partial x}=0,\\[6pt]
+\dfrac{\partial v'}{\partial t}+fu'
++g\dfrac{\partial\eta}{\partial y}=0,\\[6pt]
+\dfrac{\partial\eta}{\partial t}
++H_0\left(\dfrac{\partial u'}{\partial x}
++\dfrac{\partial v'}{\partial y}\right)
+-u'\dfrac{\partial h_B}{\partial x}
+-v'\dfrac{\partial h_B}{\partial y}=0.
+\end{cases}}
+$$</p>
+<h3 id="由涡度方程和连续方程得到准地转位涡方程"><a href="#由涡度方程和连续方程得到准地转位涡方程" class="headerlink" title="由涡度方程和连续方程得到准地转位涡方程"></a>由涡度方程和连续方程得到准地转位涡方程</h3><p>定义扰动相对涡度和水平散度：</p>
+<p>$$
+\zeta'=\frac{\partial v'}{\partial x}
+-\frac{\partial u'}{\partial y},
+\qquad
+D'=\frac{\partial u'}{\partial x}
++\frac{\partial v'}{\partial y}.
+$$</p>
+<p>将第二个扰动运动方程对 $x$ 求偏导，第一个扰动运动方程对 $y$ 求偏导，再将前者减去后者。取 $f=f_0+\beta y$，并略去二阶小量，得到线性涡度方程</p>
+<p>$$
+\frac{\partial\zeta'}{\partial t}
++\beta v'+f_0D'=0.
+$$</p>
+<p>利用第（3）问的地形条件</p>
+<p>$$
+\frac{\partial h_B}{\partial x}=0,
+$$</p>
+<p>线性连续方程化为</p>
+<p>$$
+\frac{\partial\eta}{\partial t}
++H_0D'
+-v'\frac{\partial h_B}{\partial y}=0.
+$$</p>
+<p>所以</p>
+<p>$$
+D'=\frac{1}{H_0}
+\left(
+v'\frac{\partial h_B}{\partial y}
+-\frac{\partial\eta}{\partial t}
+\right).
+$$</p>
+<p>代入线性涡度方程，消去散度：</p>
+<p>$$
+\frac{\partial\zeta'}{\partial t}
+-\frac{f_0}{H_0}\frac{\partial\eta}{\partial t}
++\left(
+\beta+\frac{f_0}{H_0}
+\frac{\partial h_B}{\partial y}
+\right)v'=0.
+$$</p>
+<p>这就是线性位涡方程的形式。其中：</p>
+<ul>
+<li>$\dfrac{\partial\zeta'}{\partial t}$ 表示相对涡度变化；</li>
+<li>$-\dfrac{f_0}{H_0}\dfrac{\partial\eta}{\partial t}$ 表示自由面变化对应的涡管伸缩作用；</li>
+<li>$\beta v'$ 表示背景行星涡度平流；</li>
+<li>$\dfrac{f_0}{H_0}\dfrac{\partial h_B}{\partial y}v'$ 表示地形厚度梯度对应的背景位涡平流。</li>
+</ul>
+<p>事实上，若直接从第（1）问的非线性方程组出发，也可以先得到</p>
+<p>$$
+\frac{d}{dt}(\zeta+f)+(\zeta+f)D=0,
+$$</p>
+<p>以及</p>
+<p>$$
+\frac{dH}{dt}+HD=0.
+$$</p>
+<p>两式合并即</p>
+<p>$$
+\boxed{\frac{d}{dt}\left(\frac{\zeta+f}{H}\right)=0}.
+$$</p>
+<p>上面的线性推导正是这一位涡守恒关系在静止基本状态和小地形条件下的线性形式。</p>
+<p>下面引入准地转近似。准地转风满足</p>
+<p>$$
+-f_0v'=-g\frac{\partial\eta}{\partial x},
+\qquad
+f_0u'=-g\frac{\partial\eta}{\partial y}.
+$$</p>
+<p>定义</p>
+<p>$$
+\boxed{\psi=\frac{g\eta}{f_0}},
+$$</p>
+<p>则</p>
+<p>$$
+u'=-\frac{\partial\psi}{\partial y},
+\qquad
+v'=\frac{\partial\psi}{\partial x},
+$$</p>
+<p>从而</p>
+<p>$$
+\zeta'=\nabla^2\psi,
+\qquad
+\eta=\frac{f_0}{g}\psi.
+$$</p>
+<p>将上述关系代入线性位涡方程：</p>
+<p>$$
+\nabla^2\frac{\partial\psi}{\partial t}
+-\frac{f_0^2}{gH_0}\frac{\partial\psi}{\partial t}
++\left(
+\beta+\frac{f_0}{H_0}
+\frac{\partial h_B}{\partial y}
+\right)
+\frac{\partial\psi}{\partial x}=0.
+$$</p>
+<p>记</p>
+<p>$$
+L_0^{-2}=\frac{f_0^2}{gH_0},
+\qquad
+\beta_T=\frac{f_0}{H_0}
+\frac{\partial h_B}{\partial y},
+$$</p>
+<p>则</p>
+<p>$$
+\left(\nabla^2-L_0^{-2}\right)
+\frac{\partial\psi}{\partial t}
++(\beta+\beta_T)\frac{\partial\psi}{\partial x}=0.
+$$</p>
+<p>最后令 $\beta=0$，得到</p>
+<p>$$
+\boxed{
+\left(\nabla^2-L_0^{-2}\right)
+\frac{\partial\psi}{\partial t}
++\beta_T\frac{\partial\psi}{\partial x}=0
+}.
+$$</p>
+<p>注意：准地转近似并没有把连续方程中的散度作用全部删除。正是保留的涡管伸缩项产生了 $-L_0^{-2}\dfrac{\partial\psi}{\partial t}$。</p>
+<h3 id="频散关系、相速度和群速度"><a href="#频散关系、相速度和群速度" class="headerlink" title="频散关系、相速度和群速度"></a>频散关系、相速度和群速度</h3><p>代入</p>
+<p>$$
+\psi=\Psi e^{i(kx+ly-\omega t)},
+$$</p>
+<p>有</p>
+<p>$$
+\nabla^2\psi=-(k^2+l^2)\psi,
+\qquad
+\frac{\partial\psi}{\partial t}=-i\omega\psi,
+\qquad
+\frac{\partial\psi}{\partial x}=ik\psi.
+$$</p>
+<p>因此</p>
+<p>$$
+i\left[(k^2+l^2+L_0^{-2})\omega+k\beta_T\right]\Psi=0.
+$$</p>
+<p>非零波动解要求</p>
+<p>$$
+\boxed{
+\omega=-\frac{k\beta_T}{k^2+l^2+L_0^{-2}}
+}.
+$$</p>
+<p>$x$ 方向相速度为</p>
+<p>$$
+\boxed{
+c_{px}=\frac{\omega}{k}
+=-\frac{\beta_T}{k^2+l^2+L_0^{-2}}
+}.
+$$</p>
+<p>$x$ 方向群速度为</p>
+<p>$$
+\boxed{
+c_{gx}=\frac{\partial\omega}{\partial k}
+=\frac{\beta_T(k^2-l^2-L_0^{-2})}
+{(k^2+l^2+L_0^{-2})^2}
+}.
+$$</p>
+<p>若进一步考虑一维波动，即 $l=0$，则</p>
+<p>$$
+c_{px}=-\frac{\beta_T}{k^2+L_0^{-2}},
+\qquad
+c_{gx}=\frac{\beta_T(k^2-L_0^{-2})}
+{(k^2+L_0^{-2})^2}.
+$$</p>
+<p>若再取水平无辐散极限 $L_0^{-2}\to0$，则</p>
+<p>$$
+\boxed{
+c_{px}=-\frac{\beta_T}{k^2},
+\qquad
+c_{gx}=\frac{\beta_T}{k^2}
+}.
+$$</p>
+<p>此时一维地形罗斯贝波的相速度与群速度大小相等、方向相反。</p>
+<p>地形项之所以起着 $\beta$ 因子的作用，是因为在位涡方程中，它与行星 $\beta$ 以完全相同的形式出现：</p>
+<p>$$
+\beta_{\mathrm{eff}}=\beta+\beta_T
+=\beta+\frac{f_0}{H_0}
+\frac{\partial h_B}{\partial y}.
+$$</p>
+<p>从物理上看，$\beta$ 表示行星涡度随纬度的变化，而地形坡度使基本流体厚度随 $y$ 变化，两者都会造成背景位涡梯度。</p>
+<p>相速度的符号满足</p>
+<p>$$
+\operatorname{sgn}(c_{px})=-\operatorname{sgn}(\beta_T).
+$$</p>
+<p>因此，当 $\dfrac{\partial h_B}{\partial y}&gt;0$ 时，$\beta_T&gt;0$，相速度沿负 $x$ 方向；当地形坡度变号时，$\beta_T$ 变号，相速度和群速度的方向也相应反转。二维情况下，群速度的具体方向还需结合 $k^2-l^2-L_0^{-2}$ 的符号判断。</p>
+<hr>
+<h1 id="滤波与滤波条件（补充）"><a href="#滤波与滤波条件（补充）" class="headerlink" title="滤波与滤波条件（补充）"></a>滤波与滤波条件（补充）</h1><p><strong>目的</strong>：滤去重力惯性外波等快波，同时尽量不歪曲罗斯贝慢波。做法是在浅水方程组中引入示踪系数 $\lambda_1,\lambda_2$，通过取不同值实现水平无辐散或准地转近似。</p>
+<h2 id="浅水方程组与涡度方程"><a href="#浅水方程组与涡度方程" class="headerlink" title="浅水方程组与涡度方程"></a>浅水方程组与涡度方程</h2><p>$$
+\begin{cases}
+\frac{\partial u}{\partial t}+u\frac{\partial u}{\partial x}+v\frac{\partial u}{\partial y}-fv+g\frac{\partial h}{\partial x}=0\\
+\frac{\partial v}{\partial t}+u\frac{\partial v}{\partial x}+v\frac{\partial v}{\partial y}+fu+g\frac{\partial h}{\partial y}=0\\
+\frac{\partial h}{\partial t}+u\frac{\partial h}{\partial x}+v\frac{\partial h}{\partial y}
++h\left(\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}\right)=0
+\end{cases}
+$$</p>
+<p>由上述方程组可得涡度方程<br>$$
+\frac{\partial\zeta}{\partial t}
++u\frac{\partial\zeta}{\partial x}
++v\frac{\partial\zeta}{\partial y}
++\beta v+(\zeta+f)\left(\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}\right)=0.
+$$</p>
+<p>用连续方程消去涡度方程中的散度项，得<br>$$
+\frac{d}{dt}\left(\frac{\zeta+f}{h}\right)=0,
+$$<br>即均质不可压缩流体的位涡守恒。</p>
+<h2 id="线性化与等价扰动方程组"><a href="#线性化与等价扰动方程组" class="headerlink" title="线性化与等价扰动方程组"></a>线性化与等价扰动方程组</h2><p>取<br>$$
+u=\bar u+u',\qquad v=v',\qquad h=H_0(y)+h',
+$$<br>$$
+\bar u=-\frac{g}{f_0}\frac{\partial H_0}{\partial y}=\text{常数}.
+$$</p>
+<p>代入浅水方程组，得扰动方程组<br>$$
+\begin{cases}
+\left(\frac{\partial}{\partial t}+\bar u\frac{\partial}{\partial x}\right)u'
+-fv'+g\frac{\partial h'}{\partial x}=0\\
+\left(\frac{\partial}{\partial t}+\bar u\frac{\partial}{\partial x}\right)v'
++fu'+g\frac{\partial h'}{\partial y}=0\\
+\left(\frac{\partial}{\partial t}+\bar u\frac{\partial}{\partial x}\right)h'
+-\frac{f_0\bar u}{g}v'
++H_0\left(\frac{\partial u'}{\partial x}+\frac{\partial v'}{\partial y}\right)=0
+\end{cases}
+$$</p>
+<p>线性化涡度方程为<br>$$
+\left(\frac{\partial}{\partial t}+\bar u\frac{\partial}{\partial x}\right)
+\left(\frac{\partial v'}{\partial x}-\frac{\partial u'}{\partial y}\right)
++\beta v'+f\left(\frac{\partial u'}{\partial x}+\frac{\partial v'}{\partial y}\right)=0.
+$$</p>
+<p>以涡度方程代替 $y$ 方向扰动运动方程，并设扰动与 $y$ 无关，得等价扰动方程组<br>$$
+\begin{cases}
+\lambda_1\left(\frac{\partial}{\partial t}+\bar u\frac{\partial}{\partial x}\right)u'
+-f_0v'+g\frac{\partial h'}{\partial x}=0\\
+\left(\frac{\partial}{\partial t}+\bar u\frac{\partial}{\partial x}\right)\frac{\partial v'}{\partial x}
++\beta v'+f_0\frac{\partial u'}{\partial x}=0\\
+\lambda_2\left(\frac{\partial}{\partial t}+\bar u\frac{\partial}{\partial x}\right)h'
+-\lambda_2\frac{f_0\bar u}{g}v'
++H_0\frac{\partial u'}{\partial x}=0
+\end{cases}
+$$<br>其中 $\lambda_1,\lambda_2$ 为示踪系数：</p>
+<ul>
+<li>$\lambda_1=1,\lambda_2=0$：水平无辐散；</li>
+<li>$\lambda_1=0,\lambda_2=1$：准地转近似（$v'$ 满足地转关系）。</li>
+</ul>
+<h2 id="频散关系-1"><a href="#频散关系-1" class="headerlink" title="频散关系"></a>频散关系</h2><p>设波解<br>$$
+(u',v',h')=(U,V,h_0)e^{ik(x-ct)},
+$$<br>代入等价扰动方程组，得<br>$$
+\begin{cases}
+\lambda_1(\bar u-c)ikU-f_0V+igkh_0=0\\
+f_0ikU+[\beta-k^2(\bar u-c)]V=0\\
+H_0ikU-\lambda_2\frac{f_0\bar u}{g}V+\lambda_2ik(\bar u-c)h_0=0
+\end{cases}
+$$<br>有非零解的条件为系数行列式为零：<br>$$
+\begin{vmatrix}
+\lambda_1(\bar u-c)ik &amp; -f_0 &amp; igk\\
+f_0ik &amp; \beta-k^2(\bar u-c) &amp; 0\\
+H_0ik &amp; -\lambda_2\dfrac{f_0\bar u}{g} &amp; \lambda_2ik(\bar u-c)
+\end{vmatrix}=0.
+$$<br>展开得频率方程<br>$$
+[\beta-k^2(\bar u-c)][\lambda_1\lambda_2(\bar u-c)^2-gH_0]
++\lambda_2f_0^2[(\bar u-c)-\bar u]=0.
+$$</p>
+<h2 id="不取近似：慢波与快波"><a href="#不取近似：慢波与快波" class="headerlink" title="不取近似：慢波与快波"></a>不取近似：慢波与快波</h2><p>取 $\lambda_1=\lambda_2=1$，得<br>$$
+[\beta-k^2(\bar u-c)][(\bar u-c)^2-gH_0]
++f_0^2[(\bar u-c)-\bar u]=0.
+$$<br>这是 $c$ 的三次方程，有三个根：一个涡旋慢波，一对重力惯性外波。</p>
+<p>对慢波，设 $gH_0\gg(\bar u-c)^2$，得<br>$$
+-[\beta-k^2(\bar u-c)]gH_0+f_0^2[(\bar u-c)-\bar u]\simeq0,
+$$<br>$$
+c\simeq\bar u-
+\frac{\beta+\dfrac{f_0^2\bar u}{gH_0}}
+{k^2+\dfrac{f_0^2}{gH_0}}.
+$$</p>
+<p>对快波，设 $c$ 很大，$|\bar u-c|\gg\beta/k^2$，得<br>$$
+-k^2(\bar u-c)[(\bar u-c)^2-gH_0]+f_0^2(\bar u-c)\simeq0,
+$$<br>$$
+c\simeq\bar u\pm\sqrt{gH_0+\frac{f_0^2}{k^2}}.
+$$</p>
+<h2 id="两种滤波结果"><a href="#两种滤波结果" class="headerlink" title="两种滤波结果"></a>两种滤波结果</h2><p><strong>① 水平无辐散：$\lambda_1=1,\lambda_2=0$</strong></p>
+<p>频率方程化为<br>$$
+\beta-k^2(\bar u-c)\simeq0,
+$$<br>$$
+c\simeq\bar u-\frac{\beta}{k^2}.
+$$<br>这滤去了重力惯性外波，保留了纯罗斯贝波；但也去掉了重力和惯性对慢波的影响，与未近似时的慢波解有较大差别。</p>
+<p><strong>② 准地转近似：$\lambda_1=0,\lambda_2=1$</strong></p>
+<p>频率方程化为<br>$$
+-[\beta-k^2(\bar u-c)]gH_0+f_0^2[(\bar u-c)-\bar u]\simeq0,
+$$<br>$$
+c\simeq\bar u-
+\frac{\beta+\dfrac{f_0^2\bar u}{gH_0}}
+{k^2+\dfrac{f_0^2}{gH_0}}.
+$$<br>这既滤去了重力惯性外波，又保证了涡旋慢波不受歪曲，因此准地转近似比水平无辐散更好，也说明涡旋慢波具有准地转性质。</p>
+<hr>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="9-91-的消元过程"><a href="#9-91-的消元过程" class="headerlink" title="(9.91) 的消元过程"></a>(9.91) 的消元过程</h2><p>把线性化方程组记为</p>
+<p>$$
+\begin{cases}
+u'_{t}-f_{0}v'=-g h'_{x}, &amp;(a)\\[8pt]
+v'_{t}+f_{0}u'=-g h'_{y}, &amp;(b)\\[8pt]
+h'_{t}+H_{0}\left(u'_{x}+v'_{y}\right)=0. &amp;(c)
+\end{cases}
+$$</p>
+<p>记二阶算子</p>
+<p>$$\mathcal{L}\equiv\frac{\partial^{2}}{\partial t^{2}}+f_{0}^{2},$$</p>
+<p>下面三步都围绕它展开。</p>
+<h3 id="第一步：消-$u'$，得到-$v'$-与-$h'$-的关系"><a href="#第一步：消-$u'$，得到-$v'$-与-$h'$-的关系" class="headerlink" title="第一步：消 $u'$，得到 $v'$ 与 $h'$ 的关系"></a>第一步：消 $u'$，得到 $v'$ 与 $h'$ 的关系</h3><p>$f_0\times(a)$ 得</p>
+<p>$$f_{0}u'_{t}-f_{0}^{2}v'=-gf_{0}h'_{x},$$</p>
+<p>对 $(b)$ 取 $\partial/\partial t$ 得</p>
+<p>$$v'_{tt}+f_{0}u'_{t}=-gh'_{yt}.$$</p>
+<p>两式相减（$(b)_t-f_0\times(a)$），$f_{0}u'_{t}$ 项消去：</p>
+<p>$$\mathcal{L}v'=v'_{tt}+f_{0}^{2}v'=-g\left(\frac{\partial^{2}}{\partial y\partial t}-f_{0}\frac{\partial}{\partial x}\right)h'. \tag{D}$$</p>
+<h3 id="第二步：消-$v'$，得到-$u'$-与-$h'$-的关系"><a href="#第二步：消-$v'$，得到-$u'$-与-$h'$-的关系" class="headerlink" title="第二步：消 $v'$，得到 $u'$ 与 $h'$ 的关系"></a>第二步：消 $v'$，得到 $u'$ 与 $h'$ 的关系</h3><p>对称地，对 $(a)$ 取 $\partial/\partial t$，$f_0\times(b)$：</p>
+<p>$$u'_{tt}-f_{0}v'_{t}=-gh'_{xt},\qquad f_{0}v'_{t}+f_{0}^{2}u'=-gf_{0}h'_{y},$$</p>
+<p>两式相加（$v'_t$ 项消去）：</p>
+<p>$$\mathcal{L}u'=u'_{tt}+f_{0}^{2}u'=-g\left(\frac{\partial^{2}}{\partial x\partial t}+f_{0}\frac{\partial}{\partial y}\right)h'. \tag{E}$$</p>
+<p>两式左侧算子同为 $\mathcal{L}$，这正是能把 $u',v'$ 一起消掉的原因。</p>
+<h3 id="第三步：把-$\mathcal{L}$-作用到连续方程上"><a href="#第三步：把-$\mathcal{L}$-作用到连续方程上" class="headerlink" title="第三步：把 $\mathcal{L}$ 作用到连续方程上"></a>第三步：把 $\mathcal{L}$ 作用到连续方程上</h3><p>对 $(c)$ 两边作用 $\mathcal{L}$（$\mathcal{L}$ 只含 $t$ 的导数，与 $\partial_x,\partial_y$ 可交换）：</p>
+<p>$$\mathcal{L}h'_{t}+H_{0}\left[\left(\mathcal{L}u'\right)_{x}+\left(\mathcal{L}v'\right)_{y}\right]=0.$$</p>
+<p>代入 $(E)$、$(D)$ 并求导：</p>
+<p>$$\left(\mathcal{L}u'\right)_{x}=-g\left(\frac{\partial^{3}}{\partial x^{2}\partial t}+f_{0}\frac{\partial^{2}}{\partial x\partial y}\right)h',$$</p>
+<p>$$\left(\mathcal{L}v'\right)_{y}=-g\left(\frac{\partial^{3}}{\partial y^{2}\partial t}-f_{0}\frac{\partial^{2}}{\partial x\partial y}\right)h'.$$</p>
+<p>相加时两个交叉项 $f_{0}h'_{xy}$ 恰好抵消：</p>
+<p>$$\left(\mathcal{L}u'\right)_{x}+\left(\mathcal{L}v'\right)_{y}=-g\frac{\partial}{\partial t}\left(\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}\right)h'.$$</p>
+<p>于是</p>
+<p>$$\frac{\partial h'}{\partial t}+\ \cdots\Rightarrow\quad \frac{\partial}{\partial t}\left[\frac{\partial^{2}}{\partial t^{2}}-gH_{0}\left(\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}\right)+f_{0}^{2}\right]h'=0 . \tag{9.92}$$</p>
+<p>即 $\mathcal{L}(u',v',h')=0$，其中三阶算子</p>
+<p>$$\mathcal{L}=\frac{\partial}{\partial t}\left[\frac{\partial^{2}}{\partial t^{2}}-gH_{0}\left(\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}\right)+f_{0}^{2}\right].$$</p>
+<p>再令扰动与 $y$ 无关（$\partial/\partial y=0$），就得到书上的 (9.93)：</p>
+<p>$$\frac{\partial}{\partial t}\left(\frac{\partial^{2}}{\partial t^{2}}-gH_{0}\frac{\partial^{2}}{\partial x^{2}}+f_{0}^{2}\right)h'=0 . \tag{9.93}$$</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%B0%94%E7%A7%91%E5%AD%A6/">大气科学</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%B0%94%E6%B3%A2%E5%8A%A8%E5%AD%A6/">大气波动学</a></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/11/21/%E6%AF%8F%E6%97%A5n%E7%A7%AF/" title="每日n积"><img class="cover" src="/img/text_pic.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">每日n积</div></div><div class="info-2"><div class="info-item-1">在这最后的三十天，我打算记录一些我认为比较难或者有意思的积分。</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/11/14/%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E5%AD%A6/" title="大气能量学"><img class="cover" src="/img/text_pic.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-11-14</div><div class="info-item-2">大气能量学</div></div><div class="info-2"><div class="info-item-1">介绍大气能量学的基本信息，包括实际大气的能量转换</div></div></div></a><a class="pagination-related" href="/2026/11/11/%E5%A4%A7%E6%B0%94%E8%A1%8C%E6%98%9F%E8%BE%B9%E7%95%8C%E5%B1%82%E6%94%B9/" title="大气行星边界层（改）"><img class="cover" src="/img/text_pic.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-11-11</div><div class="info-item-2">大气行星边界层（改）</div></div><div class="info-2"><div class="info-item-1">这一篇更注重本章的整体思路</div></div></div></a><a class="pagination-related" href="/2026/11/10/%E5%A4%A7%E6%B0%94%E8%A1%8C%E6%98%9F%E8%BE%B9%E7%95%8C%E5%B1%82/" title="大气行星边界层：湍流与平均运动方程"><img class="cover" src="/img/text_pic.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-11-10</div><div class="info-item-2">大气行星边界层：湍流与平均运动方程</div></div><div class="info-2"><div class="info-item-1">介绍湍流运动的基本概念、平均运动方程、湍流应力及 Prandtl 混合长理论。</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DevilA</div><div class="author-info-description">力求思想自觉其为思想</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Xamd545"><i class="fab fa-github"></i><span>访问我的 GitHub</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Xamd545" target="_blank" title="GitHub"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客刚刚建立，新的文章正在路上。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A2%E5%8A%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">波动的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A2%E5%8A%A8%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">波动定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A2%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">波参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E6%B3%A2%E5%8A%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">一维波动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E6%B3%A2%E5%8A%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">二维波动</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E6%89%B0%E5%8A%A8%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%8C%96%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">微扰动与线性化方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A3%B0%E6%B3%A2"><span class="toc-number">3.</span> <span class="toc-text">声波</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E6%9C%BA%E5%88%B6"><span class="toc-number">3.1.</span> <span class="toc-text">物理机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E6%A8%A1%E5%9E%8B"><span class="toc-number">3.2.</span> <span class="toc-text">物理模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E8%A7%A3%E8%BF%87%E7%A8%8B"><span class="toc-number">3.3.</span> <span class="toc-text">求解过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%B4%A8"><span class="toc-number">3.4.</span> <span class="toc-text">性质</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E5%8A%9B%E6%B3%A2%EF%BC%8C%E6%83%AF%E6%80%A7%E6%B3%A2%EF%BC%8C%E9%87%8D%E5%8A%9B%E6%83%AF%E6%80%A7%E6%B3%A2"><span class="toc-number">4.</span> <span class="toc-text">重力波，惯性波，重力惯性波</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%8A%9B%E5%A4%96%E6%B3%A2"><span class="toc-number">4.1.</span> <span class="toc-text">重力外波</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%8A%9B%E6%83%AF%E6%80%A7%E5%A4%96%E6%B3%A2"><span class="toc-number">4.2.</span> <span class="toc-text">重力惯性外波</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%8A%9B%E5%86%85%E6%B3%A2%E4%B8%8E%E9%87%8D%E5%8A%9B%E6%83%AF%E6%80%A7%E5%86%85%E6%B3%A2"><span class="toc-number">4.3.</span> <span class="toc-text">重力内波与重力惯性内波</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E5%8A%9B%E6%8C%AF%E8%8D%A1"><span class="toc-number">4.3.1.</span> <span class="toc-text">浮力振荡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Boussinesq%E8%BF%91%E4%BC%BC"><span class="toc-number">4.3.2.</span> <span class="toc-text">Boussinesq近似</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%AF%E9%87%8D%E5%8A%9B%E5%86%85%E6%B3%A2"><span class="toc-number">4.3.3.</span> <span class="toc-text">纯重力内波</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%AF%E6%80%A7%E5%86%85%E6%B3%A2%E4%B8%8E%E9%87%8D%E5%8A%9B%E6%83%AF%E6%80%A7%E5%86%85%E6%B3%A2"><span class="toc-number">4.3.4.</span> <span class="toc-text">惯性内波与重力惯性内波</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%83%AF%E6%80%A7%E5%86%85%E6%B3%A2"><span class="toc-number">4.3.4.1.</span> <span class="toc-text">惯性内波</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%8A%9B%E6%83%AF%E6%80%A7%E5%86%85%E6%B3%A2"><span class="toc-number">4.3.4.2.</span> <span class="toc-text">重力惯性内波</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%8E%8B%E6%B0%B4%E5%B9%B3%E6%97%A0%E8%BE%90%E6%95%A3-Rossby-%E6%B3%A2"><span class="toc-number">5.</span> <span class="toc-text">正压水平无辐散 Rossby 波</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%9C%B0%E8%BD%AC-Rossby-%E6%B3%A2"><span class="toc-number">6.</span> <span class="toc-text">准地转 Rossby 波</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%91%E6%95%A3%E5%85%B3%E7%B3%BB"><span class="toc-number">6.1.</span> <span class="toc-text">频散关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%85%E6%B0%B4%E8%BF%9E%E7%BB%AD%E6%96%B9%E7%A8%8B"><span class="toc-number">6.1.1.</span> <span class="toc-text">浅水连续方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%9C%B0%E5%BD%A2%E6%B5%85%E6%B0%B4%E6%96%B9%E7%A8%8B%E7%BB%84%E5%8F%8A%E5%85%B6%E7%BA%BF%E6%80%A7%E5%8C%96"><span class="toc-number">6.1.2.</span> <span class="toc-text">无地形浅水方程组及其线性化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E6%B6%A1%E6%96%B9%E7%A8%8B"><span class="toc-number">6.1.3.</span> <span class="toc-text">位涡方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E5%87%86%E5%9C%B0%E8%BD%AC%E6%B5%81%E5%87%BD%E6%95%B0"><span class="toc-number">6.1.4.</span> <span class="toc-text">引入准地转流函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E4%BA%8C%E7%BB%B4%E9%A2%91%E6%95%A3%E5%85%B3%E7%B3%BB"><span class="toc-number">6.1.5.</span> <span class="toc-text">求二维频散关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A8%E8%AE%BA"><span class="toc-number">6.2.</span> <span class="toc-text">讨论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E4%B8%8A%E4%B8%8B%E6%B8%B8%E6%95%88%E5%BA%94"><span class="toc-number">6.2.1.</span> <span class="toc-text">关于上下游效应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E6%AD%A3%E5%8E%8B%E6%B0%B4%E5%B9%B3%E6%97%A0%E8%BE%90%E6%95%A3-Rossby-%E6%B3%A2%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">6.2.2.</span> <span class="toc-text">与正压水平无辐散 Rossby 波的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E5%B9%BF%E5%88%B0%E5%9D%87%E5%8C%80%E8%A5%BF%E9%A3%8E%E5%9F%BA%E6%9C%AC%E6%B0%94%E6%B5%81"><span class="toc-number">6.2.3.</span> <span class="toc-text">推广到均匀西风基本气流</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%B0%E5%BD%A2Rossby%E6%B3%A2"><span class="toc-number">7.</span> <span class="toc-text">地形Rossby波</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">7.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%A7%A3%E7%AD%94"><span class="toc-number">7.2.</span> <span class="toc-text">参考解答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E5%90%AB%E5%9C%B0%E5%BD%A2%E7%9A%84%E6%B5%85%E6%B0%B4%E6%96%B9%E7%A8%8B%E7%BB%84"><span class="toc-number">7.2.1.</span> <span class="toc-text">建立含地形的浅水方程组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%8C%96"><span class="toc-number">7.2.2.</span> <span class="toc-text">线性化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B1%E6%B6%A1%E5%BA%A6%E6%96%B9%E7%A8%8B%E5%92%8C%E8%BF%9E%E7%BB%AD%E6%96%B9%E7%A8%8B%E5%BE%97%E5%88%B0%E5%87%86%E5%9C%B0%E8%BD%AC%E4%BD%8D%E6%B6%A1%E6%96%B9%E7%A8%8B"><span class="toc-number">7.2.3.</span> <span class="toc-text">由涡度方程和连续方程得到准地转位涡方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%91%E6%95%A3%E5%85%B3%E7%B3%BB%E3%80%81%E7%9B%B8%E9%80%9F%E5%BA%A6%E5%92%8C%E7%BE%A4%E9%80%9F%E5%BA%A6"><span class="toc-number">7.2.4.</span> <span class="toc-text">频散关系、相速度和群速度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BB%A4%E6%B3%A2%E4%B8%8E%E6%BB%A4%E6%B3%A2%E6%9D%A1%E4%BB%B6%EF%BC%88%E8%A1%A5%E5%85%85%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">滤波与滤波条件（补充）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%85%E6%B0%B4%E6%96%B9%E7%A8%8B%E7%BB%84%E4%B8%8E%E6%B6%A1%E5%BA%A6%E6%96%B9%E7%A8%8B"><span class="toc-number">8.1.</span> <span class="toc-text">浅水方程组与涡度方程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%8C%96%E4%B8%8E%E7%AD%89%E4%BB%B7%E6%89%B0%E5%8A%A8%E6%96%B9%E7%A8%8B%E7%BB%84"><span class="toc-number">8.2.</span> <span class="toc-text">线性化与等价扰动方程组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%91%E6%95%A3%E5%85%B3%E7%B3%BB-1"><span class="toc-number">8.3.</span> <span class="toc-text">频散关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%8F%96%E8%BF%91%E4%BC%BC%EF%BC%9A%E6%85%A2%E6%B3%A2%E4%B8%8E%E5%BF%AB%E6%B3%A2"><span class="toc-number">8.4.</span> <span class="toc-text">不取近似：慢波与快波</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E6%BB%A4%E6%B3%A2%E7%BB%93%E6%9E%9C"><span class="toc-number">8.5.</span> <span class="toc-text">两种滤波结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-number">9.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-91-%E7%9A%84%E6%B6%88%E5%85%83%E8%BF%87%E7%A8%8B"><span class="toc-number">9.1.</span> <span class="toc-text">(9.91) 的消元过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E6%B6%88-$u'$%EF%BC%8C%E5%BE%97%E5%88%B0-$v'$-%E4%B8%8E-$h'$-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">9.1.1.</span> <span class="toc-text">第一步：消 $u&#39;$，得到 $v&#39;$ 与 $h&#39;$ 的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%B6%88-$v'$%EF%BC%8C%E5%BE%97%E5%88%B0-$u'$-%E4%B8%8E-$h'$-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">9.1.2.</span> <span class="toc-text">第二步：消 $v&#39;$，得到 $u&#39;$ 与 $h&#39;$ 的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E6%8A%8A-$%5Cmathcal%7BL%7D$-%E4%BD%9C%E7%94%A8%E5%88%B0%E8%BF%9E%E7%BB%AD%E6%96%B9%E7%A8%8B%E4%B8%8A"><span class="toc-number">9.1.3.</span> <span class="toc-text">第三步：把 $\mathcal{L}$ 作用到连续方程上</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/11/22/%E5%A4%A7%E6%B0%94%E6%B3%A2%E5%8A%A8%E5%AD%A6/" title="大气波动学"><img src="/img/text_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="大气波动学"/></a><div class="content"><a class="title" href="/2026/11/22/%E5%A4%A7%E6%B0%94%E6%B3%A2%E5%8A%A8%E5%AD%A6/" title="大气波动学">大气波动学</a><time datetime="2026-11-21T16:00:00.000Z" title="发表于 2026-11-22 00:00:00">2026-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/11/21/%E6%AF%8F%E6%97%A5n%E7%A7%AF/" title="每日n积"><img src="/img/text_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日n积"/></a><div class="content"><a class="title" href="/2026/11/21/%E6%AF%8F%E6%97%A5n%E7%A7%AF/" title="每日n积">每日n积</a><time datetime="2026-11-20T16:00:00.000Z" title="发表于 2026-11-21 00:00:00">2026-11-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/11/14/%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E5%AD%A6/" title="大气能量学"><img src="/img/text_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="大气能量学"/></a><div class="content"><a class="title" href="/2026/11/14/%E5%A4%A7%E6%B0%94%E8%83%BD%E9%87%8F%E5%AD%A6/" title="大气能量学">大气能量学</a><time datetime="2026-11-13T16:00:00.000Z" title="发表于 2026-11-14 00:00:00">2026-11-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/11/12/%E9%9A%8F%E7%AC%941/" title="随笔1"><img src="/img/text_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="随笔1"/></a><div class="content"><a class="title" href="/2026/11/12/%E9%9A%8F%E7%AC%941/" title="随笔1">随笔1</a><time datetime="2026-11-11T16:00:00.000Z" title="发表于 2026-11-12 00:00:00">2026-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/11/11/%E5%A4%A7%E6%B0%94%E8%A1%8C%E6%98%9F%E8%BE%B9%E7%95%8C%E5%B1%82%E6%94%B9/" title="大气行星边界层（改）"><img src="/img/text_pic.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="大气行星边界层（改）"/></a><div class="content"><a class="title" href="/2026/11/11/%E5%A4%A7%E6%B0%94%E8%A1%8C%E6%98%9F%E8%BE%B9%E7%95%8C%E5%B1%82%E6%94%B9/" title="大气行星边界层（改）">大气行星边界层（改）</a><time datetime="2026-11-10T16:00:00.000Z" title="发表于 2026-11-11 00:00:00">2026-11-11</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By DevilA</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.2</a></span></div><div class="footer_custom_text">力求思想自觉其为思想</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.2"></script><script src="/js/main.js?v=5.7.2"></script><div class="js-pjax"></div><script defer src="/js/mathjax-loader.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.7.2"></script></div></div></body></html>
